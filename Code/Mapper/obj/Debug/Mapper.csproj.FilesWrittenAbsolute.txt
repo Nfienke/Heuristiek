@@ -1,0 +1,5 @@
+/Users/kimschuiten/Downloads/Code/Mapper/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/kimschuiten/Downloads/Code/Mapper/bin/Debug/Mapper.dll.mdb
+/Users/kimschuiten/Downloads/Code/Mapper/bin/Debug/Mapper.dll
+/Users/kimschuiten/Downloads/Code/Mapper/obj/Debug/Mapper.dll
+/Users/kimschuiten/Downloads/Code/Mapper/obj/Debug/Mapper.dll.mdb
