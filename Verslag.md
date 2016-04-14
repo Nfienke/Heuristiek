@@ -18,6 +18,9 @@ PLAN DE CAMPAGNE
 - Hoe kunnen we het beste de gridlines en de coördinaten aanpakken?
 - Feedback op ons algoritme (depth first): Kunnen we zoals ons eerste plan het beste van groot naar klein werken? Of is het beter als het algoritme is de eerst de grootste tegel plaatst en dan op basis van de gridlines bepaalt of de volgende tegel een grote of een kleine moet zijn?
 
+Mogelijke presentatie volgende week:
+focus op welke methodes die we hebben gevonden en kunnen we die uitleggen. Kunnen die misschien het probleem oplossen?
+
 <b>Inleiding</b>
 
 (wat is ons probleem?) Het tegelset probleem.....
