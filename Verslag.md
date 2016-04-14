@@ -13,6 +13,10 @@ PLAN DE CAMPAGNE
 6.	Voor GUI kijken naar voorbeeldcode Python.
 7.	Wat voor package hebben we nodig om python te runnen
 
+Vragen Wouter 19/04:
+- Tips voor GUI om de tegels te visualiseren?
+- Hoe kunnen we het beste de gridlines en de coördinaten aanpakken?
+- Feedback op ons algoritme (depth first): Kunnen we zoals ons eerste plan het beste van groot naar klein werken? Of is het beter als het algoritme is de eerst de grootste tegel plaatst en dan op basis van de gridlines bepaalt of de volgende tegel een grote of een kleine moet zijn?
 
 <b>Inleiding</b>
 
