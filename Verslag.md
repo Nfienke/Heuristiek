@@ -2,6 +2,18 @@ Verslag Heuristiek
 Tegelzetten
 Tegeltjeswijsheid: Kim Schuiten, Ruben Postma en Nienke Pot.
 
+PLAN DE CAMPAGNE
+
+1.	artikelen zoeken
+2.	op basis artikelen algoritme bepalen
+3.	op basis algoritme state space, boven grens en onder grens bepalen
+
+4.	algoritme – depth first. Van groot naar klein.
+5.	Hoe gaan we dat in programmeertaal en formule opschrijven. 
+6.	Voor GUI kijken naar voorbeeldcode Python.
+7.	Wat voor package hebben we nodig om python te runnen
+
+
 <b>Inleiding</b>
 
 (wat is ons probleem?) Het tegelset probleem.....
