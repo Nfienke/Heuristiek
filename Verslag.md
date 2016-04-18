@@ -11,7 +11,7 @@ PLAN DE CAMPAGNE
 4.	algoritme – depth first. Van groot naar klein.
 5.	Hoe gaan we dat in programmeertaal en formule opschrijven. 
 6.	Voor GUI kijken naar voorbeeldcode Python.
-7.	Wat voor package hebben we nodig om python te runnen
+7.	Wat voor package hebben we nodig om python/GUI te runnen
 
 <b>Vragen Wouter 19/04:</b>
 - Tips voor GUI om de tegels te visualiseren?
@@ -43,6 +43,6 @@ Lowerbound is,
 
 N-1
 
-probleem is vrij lastig omdat het een grootte state space hebt. Wel kunnen er meerdere mogelijkheden zijn en de ene oplossing is niet meer efficient dan een ander. Dus als er een oplossing gevonden is hoeft er niet gezocht worden naar een betere/efficientere oplossing. 
+Het probleem is vrij lastig omdat het een grootte state space hebt. Wel kunnen er meerdere mogelijkheden zijn en de ene oplossing is niet meer efficient dan een ander. Dus als er een oplossing gevonden is hoeft er niet gezocht worden naar een betere/efficientere oplossing. 
 
 
