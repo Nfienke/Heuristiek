@@ -1,4 +1,4 @@
 # Heuristiek
-##Probleem tegelzetten <br>
+###Probleem tegelzetten 
 Door: Kim Schuiten, Ruben Postma en Nienke Pot
 
