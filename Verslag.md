@@ -34,9 +34,18 @@ Lowerbound is,
 N-1
 
 Het probleem is vrij lastig omdat het een grootte state space hebt. Wel kunnen er meerdere mogelijkheden zijn en de ene oplossing is niet meer efficient dan een ander. Dus als er een oplossing gevonden is hoeft er niet gezocht worden naar een betere/efficientere oplossing.(geen optimalisatie probleem) STATE SPACE UITWERKEN
+-complexiteit
+-dezelfde tegels zou state space kunnen verkleinen. 
+- hoeveeheid oplossingen?
+- leads/hints hebben we niet
+- -patronen, willen we gaan proberen met gridlines
+- geen optimalisatie/effientie.
 
 <b>ALGORITME</b>
 Welk algoritme gaan we gebruiken?
+-depth first
+-brute force en compleet
+- geen breadth fist, want te veel geheugen en geen optimalisatie. wij hebben wel een soort sorteer strategie. 
 
 
 <b>DATASTRUCTUUR</b>
@@ -49,5 +58,6 @@ We hebben een canvas waarop de tegels geplaatst moeten worden. We hebben ook een
 We willen eerst die tegelsets sorteren van groot naar klein. 
 De grootste tegel zetten we op de coördinaten 0,0. De plekken waar we tegels neer zetten is used space. Het stuk canvas dat over blijft noemen we free space. De blokken die in de free space vrij staan zetten we ook in een array met coördinaten. 
 Bovenstaande is nu te ingewikkeld. Onze aanpak nu is om alles gewoon random er in te zetten en als het niet past een stap terug te doen, we moeten dus die boom uitwerken. 
+-gridlines toevoegen in toekomst. 
 
 
