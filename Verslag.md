@@ -10,7 +10,7 @@ PLAN DE CAMPAGNE
 4. welk algoritme en schrijven --> algoritme – depth first. Van groot naar klein.
 
 
-<b>Inleiding</b>
+####Inleiding
 
 Bij het tegelset probleem..... PROBLEEM UITWERKEN
 Dit probleem komen we ook in meer praktische varianten tegen in het dagelijks leven, hoe pak je je koffer in en hoe worden deze koffers allemaal weer netjes in het vliegtuig geladen. TOEPASBAARHEID UITWERKEN
@@ -23,7 +23,7 @@ Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(b
 
 (plaatje van ons algoritme gesorteerd.)
 
-<b>State space:</b>
+####State space
 
 De moeilijkheid van het probleem zit hem vooral in de grootte van de state space.
 De upperbound van het tegelzetprobleem is normaal N!, maar door het vooraf sorteren van de items op grootte is de eerste stap al bepaald. Dit maakt de upperbound kleiner, de upperbound is dan N-1!. Ookal is de state space nu wel iets kleiner, het aantal opties is nog steeds zeer groot. 
@@ -33,21 +33,22 @@ Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. 
 Het probleem heeft geen leads die het probleem makkelijker zouden kunnen maken.
 
 
+####Algoritme
 
-
-<b>ALGORITME</b>
 Welk algoritme gaan we gebruiken?
 -depth first
 -brute force en compleet
 - geen breadth fist, want te veel geheugen en geen optimalisatie. wij hebben wel een soort sorteer strategie. 
 
 
-<b>DATASTRUCTUUR</b>
+####DATASTRUCTUUR
+
 Welke data structuur gebruiken we?
 We maken in ieder geval twee objecten aan. De eerste is ons canvas. In dit object staan de functies FreeSpace en UsedSpace. UsedSpace zijn de coordinaten van de geplaatste tegels. FreeSpace is de grootte van het canvas minus de UsedSpace. Het tweede object is de TileSet. Hierin staat een array met alle tegels in het probleem en een array waarin ze worden gesorteerd. In dit object staat ook een functie waarin elke tegel staat beschrijven. 
 Tiles in een apart bestandje zetten waaruit we ze importeren. 
 
-<b>MODELLEREN:</b>
+####MODELLEREN
+
 We hebben een canvas waarop de tegels geplaatst moeten worden. We hebben ook een set met tegels van verschillende groottes. 
 We willen eerst die tegelsets sorteren van groot naar klein. 
 De grootste tegel zetten we op de coördinaten 0,0. De plekken waar we tegels neer zetten is used space. Het stuk canvas dat over blijft noemen we free space. De blokken die in de free space vrij staan zetten we ook in een array met coördinaten. 
