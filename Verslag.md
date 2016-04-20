@@ -24,22 +24,16 @@ Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(b
 (plaatje van ons algoritme gesorteerd.)
 
 <b>State space:</b>
-Onze upperbound is,
 
-(N-1)!
-doordat de items al gesorteerd zijn N-1! ipv N!
+De moeilijkheid van het probleem zit hem vooral in de grootte van de state space.
+De upperbound van het tegelzetprobleem is normaal N!, maar door het vooraf sorteren van de items op grootte is de eerste stap al bepaald. Dit maakt de upperbound kleiner, de upperbound is dan N-1!. Ookal is de state space nu wel iets kleiner, het aantal opties is nog steeds zeer groot. 
+Het minimaal aantal stappen dat moet worden gezet voor een oplossing is normaal N, maar door het vooraf sorteren is de lowerbound N-1. Tegels met dezelfde grootte kan de state space verkleinen. Stel je hebt 4 vierkante tegels met een breedte 2,3,4,5 dan heb je meer keuze in het plaatsen van de tegels dan als al tegels een breedte hebben van alleen 2 en 4. 
 
-Lowerbound is,
+Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn alle even goed. Er is dan geen betere of slechtere oplossing. Wel kan door het maken van patronen de oplossing makkelijker worden gemaakt. Door het toevoegen van gridlines waardoor het canvas wordt opgedeeld in kleinere vlakken. Ook kan je dan binnen het canvas met de vlakken schuiven. (PATRONEN BETER UITLEGGEN)
+Het probleem heeft geen leads die het probleem makkelijker zouden kunnen maken.
 
-N-1
 
-Het probleem is vrij lastig omdat het een grootte state space hebt. Wel kunnen er meerdere mogelijkheden zijn en de ene oplossing is niet meer efficient dan een ander. Dus als er een oplossing gevonden is hoeft er niet gezocht worden naar een betere/efficientere oplossing.(geen optimalisatie probleem) STATE SPACE UITWERKEN
--complexiteit
--dezelfde tegels zou state space kunnen verkleinen. 
-- hoeveeheid oplossingen?
-- leads/hints hebben we niet
-- -patronen, willen we gaan proberen met gridlines
-- geen optimalisatie/effientie.
+
 
 <b>ALGORITME</b>
 Welk algoritme gaan we gebruiken?
