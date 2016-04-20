@@ -14,14 +14,8 @@ PLAN DE CAMPAGNE
 
 Bij het tegelset probleem..... PROBLEEM UITWERKEN
 Dit probleem komen we ook in meer praktische varianten tegen in het dagelijks leven, hoe pak je je koffer in en hoe worden deze koffers allemaal weer netjes in het vliegtuig geladen. TOEPASBAARHEID UITWERKEN
+Bin packing problem
 
-We hebben het probleem vergeleken met het bin packing problem(bron?). Waarbij we een depth first algoritme gebruiken, waarbij de items vooraf gesorteerd zijn op grootte. Het depth first algoritme werkt als volgt.....
-
-(plaatje tree depth first algoritme)
-
-Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(bron en uitleg over natuurlijke manier van sorteren)
-
-(plaatje van ons algoritme gesorteerd.)
 
 ####State space
 
@@ -34,6 +28,15 @@ Het probleem heeft geen leads die het probleem makkelijker zouden kunnen maken.
 
 
 ####Algoritme
+We hebben het probleem vergeleken met het bin packing problem(bron?).
+ Waarbij we een depth first algoritme gebruiken, waarbij de items vooraf gesorteerd zijn op grootte. Het depth first algoritme werkt als volgt.....
+
+(plaatje tree depth first algoritme)
+
+Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(bron en uitleg over natuurlijke manier van sorteren)
+
+(plaatje van ons algoritme gesorteerd.)
+
 
 Welk algoritme gaan we gebruiken?
 -depth first
