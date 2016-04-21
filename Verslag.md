@@ -50,6 +50,13 @@ Welke data structuur gebruiken we?
 We maken in ieder geval twee objecten aan. De eerste is ons canvas. In dit object staan de functies FreeSpace en UsedSpace. UsedSpace zijn de coordinaten van de geplaatste tegels. FreeSpace is de grootte van het canvas minus de UsedSpace. Het tweede object is de TileSet. Hierin staat een array met alle tegels in het probleem en een array waarin ze worden gesorteerd. In dit object staat ook een functie waarin elke tegel staat beschrijven. 
 Tiles in een apart bestandje zetten waaruit we ze importeren. 
 
+Elke keer door de array lopen kost heel veel tijd! Elk van de rij in ons canvas is een lijst. Waarin 1 bezet betekent, en 0  vrij. Bijv:
+[[1, 1, 0],
+[1, 1, 0],
+[0, 0, 0]]
+GRID[0][2] == 0 # hier kan je een tegel plaatsen. 
+
+
 ####MODELLEREN
 
 We hebben een canvas waarop de tegels geplaatst moeten worden. We hebben ook een set met tegels van verschillende groottes. 
