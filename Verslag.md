@@ -3,17 +3,22 @@ Tegelzetten
 Tegeltjeswijsheid: Kim Schuiten, Ruben Postma en Nienke Pot.
 
 PLAN DE CAMPAGNE
-
+week 1
 1.Datastructuur
 2.Modelleren--> beetje programmeren, classes neerzetten etc. 
 3. Schrijven over statespace
 4. welk algoritme en schrijven --> algoritme – depth first. Van groot naar klein.
 
+week 2
+5. Hoe krijgen we toegang tot elke coordinaat?
+6. Hoe veranderen we een 0 naar een naam van een tegel?
+7. Verslag verder uitwerken
+
 
 ####Inleiding
 
-Bij het tegelset probleem..... PROBLEEM UITWERKEN
-Dit probleem komen we ook in meer praktische varianten tegen in het dagelijks leven, hoe pak je je koffer in en hoe worden deze koffers allemaal weer netjes in het vliegtuig geladen. TOEPASBAARHEID UITWERKEN
+Bij het tegelset probleem..... PROBLEEM UITWERKEN --> Kim
+Dit probleem komen we ook in meer praktische varianten tegen in het dagelijks leven, hoe pak je je koffer in en hoe worden deze koffers allemaal weer netjes in het vliegtuig geladen. TOEPASBAARHEID UITWERKEN --> Kim
 Bin packing problem
 
 
@@ -23,7 +28,7 @@ De moeilijkheid van het probleem zit hem vooral in de grootte van de state space
 De upperbound van het tegelzetprobleem is normaal N!, maar door het vooraf sorteren van de items op grootte is de eerste stap al bepaald. Dit maakt de upperbound kleiner, de upperbound is dan N-1!. Ookal is de state space nu wel iets kleiner, het aantal opties is nog steeds zeer groot. 
 Het minimaal aantal stappen dat moet worden gezet voor een oplossing is normaal N, maar door het vooraf sorteren is de lowerbound N-1. Tegels met dezelfde grootte kan de state space verkleinen. Stel je hebt 4 vierkante tegels met een breedte 2,3,4,5 dan heb je meer keuze in het plaatsen van de tegels dan als al tegels een breedte hebben van alleen 2 en 4. 
 
-Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn alle even goed. Er is dan geen betere of slechtere oplossing. Wel kan door het maken van patronen de oplossing makkelijker worden gemaakt. Door het toevoegen van gridlines waardoor het canvas wordt opgedeeld in kleinere vlakken. Ook kan je dan binnen het canvas met de vlakken schuiven. (PATRONEN BETER UITLEGGEN)
+Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn alle even goed. Er is dan geen betere of slechtere oplossing. Wel kan door het maken van patronen de oplossing makkelijker worden gemaakt. Door het toevoegen van gridlines waardoor het canvas wordt opgedeeld in kleinere vlakken. Ook kan je dan binnen het canvas met de vlakken schuiven. (PATRONEN BETER UITLEGGEN) --> Nienke 
 Het probleem heeft geen leads die het probleem makkelijker zouden kunnen maken.
 
 
@@ -36,6 +41,7 @@ We hebben het probleem vergeleken met het bin packing problem(bron?).
 Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(bron en uitleg over natuurlijke manier van sorteren)
 
 (plaatje van ons algoritme gesorteerd.)
+UITWERKEN WAT DEPTH FIRST IS ETC. --> Kim
 
 
 Welk algoritme gaan we gebruiken?
@@ -55,6 +61,8 @@ Elke keer door de array lopen kost heel veel tijd! Elk van de rij in ons canvas 
 [1, 1, 0],
 [0, 0, 0]]
 GRID[0][2] == 0 # hier kan je een tegel plaatsen. 
+
+--> Nienke
 
 
 ####MODELLEREN
