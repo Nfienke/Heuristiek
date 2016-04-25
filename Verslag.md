@@ -52,6 +52,10 @@ Welk algoritme gaan we gebruiken?
 
 ####DATASTRUCTUUR
 
+<b>Tileset</b>
+
+<b>Canvas</b>
+
 Welke data structuur gebruiken we?
 We maken in ieder geval twee objecten aan. De eerste is ons canvas. In dit object staan de functies FreeSpace en UsedSpace. UsedSpace zijn de coordinaten van de geplaatste tegels. FreeSpace is de grootte van het canvas minus de UsedSpace. Het tweede object is de TileSet. Hierin staat een array met alle tegels in het probleem en een array waarin ze worden gesorteerd. In dit object staat ook een functie waarin elke tegel staat beschrijven. 
 Tiles in een apart bestandje zetten waaruit we ze importeren. 
