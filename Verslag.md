@@ -59,6 +59,7 @@ Voor ons algoritme maken we gebruik van de Depth First Search (DFS), waarin we o
 De Depth First Search kan het beste worden gezien als een boom waarin men steeds een tak volgt waar aan het einde ofwel een oplossing is, ofwel geen oplossing. Als er geen oplossing is aan het einde van de tak moet men terugzoeken naar de laatste vertakking en deze vertakking afgaan, enzovoort (zie afbeeld n). De punt waar vertakkingen ontstaan noemen we nodes, alle nodes zijn in eerste instantie ongemarkeerd. In de code van een dergelijk algoritme moet men wel verwerken of een node al eerder bezocht is of niet, zodat er steeds naar een nieuwe vertakking wordt gezocht(K. Mehlhorn en P. Sanders, 2008: 178). 
 
 De pseudocode van een dergelijk algoritme zou er als volgt uit kunnen zien:
+
 Def DFS(graph, start):
 	stack = [start]
 	visited = []
@@ -68,6 +69,7 @@ Def DFS(graph, start):
 			visited.append(parent)
 			for n in parent.children
 				stack.append(n) #push
+
 <i>Bron: College 18 april</i>
 
 
