@@ -17,6 +17,7 @@ week 2
 week 3
 8.Algoritme volledig werkend --> visualisatie.
 9. Verslag verder uitwerken. 
+10. verbeteren algoritme --> bouwcamp code: http://mathworld.wolfram.com/PerfectSquareDissection.html
 
 
 ####Inleiding
