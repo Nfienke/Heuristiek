@@ -26,10 +26,12 @@ Bin packing problem
 
 De moeilijkheid van het probleem zit hem vooral in de grootte van de state space.
 De upperbound van het tegelzetprobleem is normaal N!, maar door het vooraf sorteren van de items op grootte is de eerste stap al bepaald. Dit maakt de upperbound kleiner, de upperbound is dan N-1!. Ookal is de state space nu wel iets kleiner, het aantal opties is nog steeds zeer groot. 
-Het minimaal aantal stappen dat moet worden gezet voor een oplossing is normaal N, maar door het vooraf sorteren is de lowerbound N-1. Tegels met dezelfde grootte kan de state space verkleinen. Stel je hebt 4 vierkante tegels met een breedte 2,3,4,5 dan heb je meer keuze in het plaatsen van de tegels dan als al tegels een breedte hebben van alleen 2 en 4. 
+Het minimaal aantal stappen dat moet worden gezet voor een oplossing is normaal N, maar door het vooraf sorteren is de lowerbound N-1. Tegels met dezelfde grootte kan de state space verkleinen. Stel je hebt 4 vierkante tegels met een breedte 2,3,4,5 dan heb je meer keuze in het plaatsen van de tegels dan als alle tegels een breedte hebben van alleen 2 en 4. <br>
 
-Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn alle even goed. Er is dan geen betere of slechtere oplossing. Wel kan door het maken van patronen de oplossing makkelijker worden gemaakt. Door het toevoegen van gridlines waardoor het canvas wordt opgedeeld in kleinere vlakken. Ook kan je dan binnen het canvas met de vlakken schuiven. (PATRONEN BETER UITLEGGEN) --> Nienke 
-Het probleem heeft geen leads die het probleem makkelijker zouden kunnen maken.
+Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn allen even goed. Er is dan geen betere of slechtere oplossing. Het probleem heeft ook geen leads die het probleem makkelijker zouden kunnen maken. <br>
+
+Wel kan het probleem door het maken van patronen makkelijker worden gemaakt. Dit zou kunnen door het toevoegen van gridlines. Deze splitsen het canvas, na het plaatsen van de eerste en grootste tegel, op in kleinere vlakken. Op deze manier wordt het canvas opgedeeld in kleinere vlakken en dus kleinere problemen. Door de kleinere canvassen op te vullen met tegels, ontstaan er kleine canvassen met tegels in een groot canvas. (IS PATRONEN HELDER??)
+
 
 
 ####Algoritme
