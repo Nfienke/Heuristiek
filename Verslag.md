@@ -14,6 +14,9 @@ week 2
 6. Hoe veranderen we een 0 naar een naam van een tegel?
 7. Verslag verder uitwerken
 
+week 3
+Algoritme volledig werkend --> visualisatie. 
+
 
 ####Inleiding
 
