@@ -74,11 +74,6 @@ Def DFS(graph, start):
 
 
 
-Welk algoritme gaan we gebruiken?
--depth first
--brute force en compleet
-- geen breadth fist, want te veel geheugen en geen optimalisatie. wij hebben wel een soort sorteer strategie. 
-
 
 ####DATASTRUCTUUR
 
