@@ -38,7 +38,7 @@ We hebben het probleem vergeleken met het bin packing problem(bron?).
 
 (plaatje tree depth first algoritme)
 
-Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficienter.(bron en uitleg over natuurlijke manier van sorteren)
+Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficiënter.(bron en uitleg over natuurlijke manier van sorteren)
 
 (plaatje van ons algoritme gesorteerd.)
 UITWERKEN WAT DEPTH FIRST IS ETC. --> Kim
@@ -54,20 +54,41 @@ Welk algoritme gaan we gebruiken?
 
 <b>Tileset</b>
 
+De tegels die gebruikt moeten worden om het canvas te vullen zijn een van de objecten in onze data. Aangezien er vrij veel tegels en sets van tegels zijn, hebben wij ervoor gekozen om deze tegelsets in een externe file te zetten en ze vanuit daar in te laden. Hieronder volgt een voorbeeld van hoe een tegelset is gerepresenteerd.<br>
+
+tileSet1 = [('A',2,2),('B',3,3),('C',3,3),('D',3,3),('E',3,3),('F',3,3),('G',3,3),
+('H',3,3),('I',5,5),('J',5,5),('K',5,5),('L',7,7),('M',7,7),('N',7,7)]
+<br>
+
+Elke tegelset is genummerd, aan de hand van het nummer van de problemsets. De tegelset bestaat uit een list of lists. Een list die de totale weergave van de tegelset representeert, bestaande uit lists waarin elke list een tegel weergeeft. 
+Elke tegel heeft een naam, bestaande uit 1 of 2 letters. En een tegel heeft een breedte en een lengte. 
+
+De tegels hebben een naam, omdat we zo makkelijker kunnen kijken welke tegels gebruikt zijn en of de tegels op de juiste manier gebruikt zijn. Als je een tegel alleen plaatst, weten we niet welke tegel dit is. Dan valt wel te achterhalen hoe groot een tegel is, maar niet welke tegel dat dan geweest is, als er bijvoorbeeld meerdere tegels van 3 bij 3 zijn. En misschien is de tegel er wel met de foute afmetingen ingezet. Door de naam van de tegel is dan achteraf makkelijker te controleren of de plaatsing van de tegels op de juist manier is gegaan. 
+
+
 <b>Canvas</b>
 
-Welke data structuur gebruiken we?
-We maken in ieder geval twee objecten aan. De eerste is ons canvas. In dit object staan de functies FreeSpace en UsedSpace. UsedSpace zijn de coordinaten van de geplaatste tegels. FreeSpace is de grootte van het canvas minus de UsedSpace. Het tweede object is de TileSet. Hierin staat een array met alle tegels in het probleem en een array waarin ze worden gesorteerd. In dit object staat ook een functie waarin elke tegel staat beschrijven. 
-Tiles in een apart bestandje zetten waaruit we ze importeren. 
+Het canvas is een belangrijk object in onze data, het moet laten zien waar welke plek vrij is of waar welke tegel is gezet. Hiervoor is er een soort matrix gebruikt. Deze wordt gerepresenteerd als een list of lists. 
+Er is een grote list die het canvas als totaal weergeeft en daarin zitten lists die elk een row representeert. De rijen zijn dan de lists en de elementen in de lists representeren het aantal kolommen. Op deze manier heb je meteen een soort coördinaat systeem, waar je een plek kan aanwijzen door te verwijzen naar een rij(de positie van een list in de list) en vervolgens naar het nummer van een kolom(de positie van het element in de list). Elk element in het canvas heeft dus een waarde van 1 bij 1, aangezien de tegels geen halve waardes hebben levert dit geen problemen op. Een leeg canvas van 4 bij 4, komt er dan als volgt uit te zien:<br>
 
-Elke keer door de array lopen kost heel veel tijd! Elk van de rij in ons canvas is een lijst. Waarin 1 bezet betekent, en 0  vrij. Bijv:
-[[1, 1, 0],
-[1, 1, 0],
-[0, 0, 0]]
-GRID[0][2] == 0 # hier kan je een tegel plaatsen. 
+Canvas= 
+[[0,0,0,0]
+[0,0,0,0]
+[0,0,0,0]
+[0,0,0,0]]
+<br>
 
---> Nienke
 
+Een 0 representeert een leeg vlak, als een tegel in het canvas past, dan wordt de letter ingevuld op die positie in het canvas. Bijvoorbeeld een tegel A van 2 bij 2, wordt als volgt in het canvas geplaatst.<br> 
+
+Canvas= 
+[[A,A,0,0]
+[A,A,0,0]
+[0,0,0,0]
+[0,0,0,0]]
+<br>
+
+Op deze manier is het ook visueel snel duidelijk waar nog ruimte over is, en hoe de tegels geplaatst zijn. Je loopt door het canvas heen en als Canvas[0][1]==0 is, dan weet je dat deze plek vrij is om te plaatsen. 
 
 ####MODELLEREN
 
