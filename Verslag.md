@@ -22,10 +22,11 @@ week 3
 --> of gridlines??
 
 ####Inleiding
+Het probleem waar wij ons mee bezig hebben gehouden heet tegelzetten. Zoals de naam al doet vermoeden moeten wij een bepaald aantal tegels van verschillende groottes zetten op een canvas van bepaalde grootte. Het lastige aan dit probleem is dat de tegels precies moeten passen, er mogen geen tussenruimtes tussen de tegels zitten en de tegels mogen ook niet overlappen (website heuristieken). 
+	Dit maakt het probleem een constraint satisfaction probleem. Er moet worden voldaan aan een  aantal voorwaarden, de oplossing is goed zodra hier aan is voldaan. Er zijn daarom geen goede of slechte oplossingen, alle oplossingen zijn even goed (college 25 april).
+	Het probleem van tegelzetten is iets wat we op gevarieerde wijze in de praktijk tegen komen. Denk bijvoorbeeld aan het zo efficiënt mogelijk inpakken van de laadruimte van een vliegtuig, of zelfs je eigen koffer. Dit soort inpak problemen worden ook wel het packing problems genoemd, in ons geval hebben we te maken met een probleem dat lijkt op het two-dimensional bin packing problem. In dit probleem krijgt men een minimaal aantal rechthoekige “bins” met een breedte van B en een hoogte van H, en een set van rechthoekige items met een breedte van bj <= B en een hoogte van hj, waarbij 1 <= j <= n. Het probleem is dat men de items wilt inpakken in het minimale aantal “bins” zonder dat er overlap is tussen de items. Daarnaast mogen de items in dit probleem ook niet gedraaid worden (survey on two dimensional packing en Bansal et al p. 1). De algoritmes die in de literatuur worden genoemd om dit soort problemen op te lossen zijn te verdelen in twee soorten. Ten eerste de one phase algoritmes. Hierin worden de items regelrecht in het minimum aantal bins geplaatst. De tweede soort is het two phase algoritme. In deze algoritmes wordt er gestart met het plaatsen van items in een enkele strip. In de tweede fase wordt de strip oplossing gebruikt om het inpakken van het minimale aantal bins op te bouwen (survey on two dimensional packing).
+	Dit two-dimensional bin packing problem sluit echter niet helemaal aan op ons probleem. In het tegelzet probleem hebben we namelijk niet te maken met meerdere twee-dimensionale bins, maar met één twee-dimensionaal canvas waar het aantal tegels dat we hebben precies op moet passen. Bij bin packin problems heeft men nog de optie om ruimte over te houden, er wordt gezocht naar een optimale manier van inpakken, bij ons bestaat die mogelijkheid niet. 
 
-Bij het tegelset probleem..... PROBLEEM UITWERKEN --> Kim
-Dit probleem komen we ook in meer praktische varianten tegen in het dagelijks leven, hoe pak je je koffer in en hoe worden deze koffers allemaal weer netjes in het vliegtuig geladen. TOEPASBAARHEID UITWERKEN --> Kim
-Bin packing problem
 
 
 ####State space
@@ -50,15 +51,20 @@ PATRONEN HELDER, bouwcamp/gridlines nog meer??)
 
 
 ####Algoritme
-We hebben het probleem vergeleken met het bin packing problem(bron?).
- Waarbij we een depth first algoritme gebruiken, waarbij de items vooraf gesorteerd zijn op grootte. Het depth first algoritme werkt als volgt.....
+Voor ons algoritme maken we gebruik van de Depth First Search (DFS), waarin we onze items vooraf sorteren op grootte. DFS algoritmes zijn constructief, ze worden stap voor stap opgebouwd en alle mogelijkheden worden afgegaan, dit noemen we brute force. Uiteindelijk zal het algoritme een oplossing terug geven, of een ‘oplossing bestaat niet’, het is dus een compleet algoritme. Het verschil met de Breadth First Search zit met name in de snelheid en het aantal geheugen dat wordt gebruikt. Breadt First wordt vaak gebruikt voor optimalisatie problemen, en daar zijn wij niet mee bezig  (college 18 april).
+	De Depth First Search kan het beste worden gezien als een boom waarin men steeds een tak volgt waar aan het einde ofwel een oplossing is, ofwel geen oplossing. Als er geen oplossing is aan het einde van de tak moet men terugzoeken naar de laatste vertakking en deze vertakking afgaan, enzovoort (zie afbeeld n). De punt waar vertakkingen ontstaan noemen we nodes, alle nodes zijn in eerste instantie ongemarkeerd. In de code van een dergelijk algoritme moet men wel verwerken of een node al eerder bezocht is of niet, zodat er steeds naar een nieuwe vertakking wordt gezocht(K. Mehlhorn en P. Sanders, 2008: 178). 
+	De pseudocode van een dergelijk algoritme zou er als volgt uit kunnen zien:
+Def DFS(graph, start):
+	stack = [start]
+	visited = []
+	while stack:
+		parent = stack.pop() #pop from end
+		if parent not in visited
+			visited.append(parent)
+			for n in parent.children
+				stack.append(n) #push
+Bron: College 18 april
 
-(plaatje tree depth first algoritme)
-
-Doordat de items vooraf gesorteerd zijn, wordt het algoritme iets efficiënter.(bron en uitleg over natuurlijke manier van sorteren)
-
-(plaatje van ons algoritme gesorteerd.)
-UITWERKEN WAT DEPTH FIRST IS ETC. --> Kim
 
 
 Welk algoritme gaan we gebruiken?
