@@ -15,7 +15,8 @@ week 2
 7. Verslag verder uitwerken
 
 week 3
-Algoritme volledig werkend --> visualisatie. 
+8.Algoritme volledig werkend --> visualisatie.
+9. Verslag verder uitwerken. 
 
 
 ####Inleiding
