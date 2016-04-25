@@ -71,24 +71,24 @@ De tegels hebben een naam, omdat we zo makkelijker kunnen kijken welke tegels ge
 Het canvas is een belangrijk object in onze data, het moet laten zien waar welke plek vrij is of waar welke tegel is gezet. Hiervoor is er een soort matrix gebruikt. Deze wordt gerepresenteerd als een list of lists. 
 Er is een grote list die het canvas als totaal weergeeft en daarin zitten lists die elk een row representeert. De rijen zijn dan de lists en de elementen in de lists representeren het aantal kolommen. Op deze manier heb je meteen een soort coördinaat systeem, waar je een plek kan aanwijzen door te verwijzen naar een rij(de positie van een list in de list) en vervolgens naar het nummer van een kolom(de positie van het element in de list). Elk element in het canvas heeft dus een waarde van 1 bij 1, aangezien de tegels geen halve waardes hebben levert dit geen problemen op. Een leeg canvas van 4 bij 4, komt er dan als volgt uit te zien:<br>
 
-Canvas= 
-[[0,0,0,0]
-[0,0,0,0]
-[0,0,0,0]
-[0,0,0,0]]
+Canvas= <br>
+[[0,0,0,0]<br>
+[0,0,0,0]<br>
+[0,0,0,0]<br>
+[0,0,0,0]]<br>
 <br>
 
 
 Een 0 representeert een leeg vlak, als een tegel in het canvas past, dan wordt de letter ingevuld op die positie in het canvas. Bijvoorbeeld een tegel A van 2 bij 2, wordt als volgt in het canvas geplaatst.<br> 
 
-Canvas= 
-[[A,A,0,0]
-[A,A,0,0]
-[0,0,0,0]
-[0,0,0,0]]
+Canvas= <br>
+[[A,A,0,0]<br>
+[A,A,0,0]<br>
+[0,0,0,0]<br>
+[0,0,0,0]]<br>
 <br>
 
-Op deze manier is het ook visueel snel duidelijk waar nog ruimte over is, en hoe de tegels geplaatst zijn. Je loopt door het canvas heen en als Canvas[0][1]==0 is, dan weet je dat deze plek vrij is om te plaatsen. 
+Doordat de rijen onder elkaar geprint worden, is het ook visueel snel duidelijk waar nog ruimte over is en hoe de tegels geplaatst zijn. Je loopt door het canvas heen en als Canvas[0][1]==0 is, dan weet je dat deze plek vrij is om te plaatsen. 
 
 ####MODELLEREN
 
