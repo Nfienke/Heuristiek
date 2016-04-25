@@ -36,7 +36,16 @@ Het minimaal aantal stappen dat moet worden gezet voor een oplossing is normaal 
 
 Wat het probleem minder lastig maakt is dat het geen optimalisatie probleem is. Er kunnen in theorie meerdere mogelijkheden zijn en die zijn allen even goed. Er is dan geen betere of slechtere oplossing. Het probleem heeft ook geen leads die het probleem makkelijker zouden kunnen maken. <br>
 
-Wel kan het probleem door het maken van patronen makkelijker worden gemaakt. Dit zou kunnen door het toevoegen van gridlines. Deze splitsen het canvas, na het plaatsen van de eerste en grootste tegel, op in kleinere vlakken. Op deze manier wordt het canvas opgedeeld in kleinere vlakken en dus kleinere problemen. Door de kleinere canvassen op te vullen met tegels, ontstaan er kleine canvassen met tegels in een groot canvas. Of door het toepassen van de bouwcampcode, waar..... (IS PATRONEN HELDER, bouwcamp/gridlines nog meer??)
+Wel kan het probleem door het maken van patronen makkelijker worden gemaakt. Dit zou kunnen door het toevoegen van gridlines. Deze splitsen het canvas, na het plaatsen van de eerste en grootste tegel, op in kleinere vlakken. Op deze manier wordt het canvas opgedeeld in kleinere vlakken en dus kleinere problemen. Door de kleinere canvassen op te vullen met tegels, ontstaan er kleine canvassen met tegels in een groot canvas, waardoor de canvas uit grotere blokken(de kleine canvassen) bestaat. <br>
+
+(plaatje)
+<br>
+
+Ook kunnen patronen in het canvas worden gemaakt door het toepassen van de bouwcampcode. Hier worden de tegels geplaatst aangrenzend aan de meest linkstaande en bovenstaande tegel geplaatst. Hierdoor ontstaan ook groepen tegels. <br>
+(plaatje)
+<br>
+
+PATRONEN HELDER, bouwcamp/gridlines nog meer??)
 
 
 
