@@ -72,39 +72,23 @@ class Tile(object):
         self.tileHeight = tile[2]
         self.tileWidth = tile[1]
         self.tileName = tile[0]
-
-        #hoe roep je dit dan aan? eerste tile plaatsen,placetile
-        #canvas.placeTile(self.tileHeight, self.tileWidth)
-
+        
+        #aanroepen placetile functie
+        canvas = Canvas(17,17)
+        canvas.placeTile(self.tileName, self.tileHeight, self.tileWidth)
         #print self.tileName, self.tileWidth, self.tileHeight
-
 
     #begin positie van de tegel in Canvas.
     YPosition = []
     XPosition = []
 
-
-
-
-
-
 def runTileSetter():
-
-    canvas = Canvas(17,17)
-
-    #print canvas.space
-    canvas.placeTile('A',5,5)
-
 
     #sorteren van groot naar klein.
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
 
-    #
+    #Loopt door de tileset.
     for tile in sortTileSet:
          Tile(tile)
-
-
-
-
 
 runTileSetter()
