@@ -1,6 +1,10 @@
-from tilesets import *
 
+from tileSets import *
 
+"""
+Importeren van een externe file:
+MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
+"""
 
 class Canvas(object):
     """
@@ -20,23 +24,21 @@ class Canvas(object):
             print row
         print '\n'
        
+        def placeTile(startX, startY, Tile)
+            startX = 3
+            startY = 3 
+            for i in range(tileHeight):
+                for j in range (tileWidth):
+                    if (space[startY + i][startX + j] == 1):
+                        return False
+                    
+                    space[startY + i][startX + j] = 1
+            
+            for row in space:
+                print row
 
-        # proto om tegels te zetten
-        tileWidth = 5
-        tileHeight = 5
-        for i in range(tileHeight):
-            for j in range (tileWidth):
-                space[i][j] = 1
         
-        for row in space:
-            print row
-
-    
-        
-
-
-
-x = Canvas(10,10)
+x = Canvas(17,17)
 
 
 
@@ -44,15 +46,11 @@ class Tileset:
     """
     """
 
-    def Tile(self, width, height, name):
-        """
-        Width, height
-        """
-
     # Sorteren groot naar klein.
     sortTileSet = []
 
-    #for i in sortTileSet:
-        #past ie?
+for tile in tileSet1:
+    placeTile(tile)
 
+Tilset()
     
