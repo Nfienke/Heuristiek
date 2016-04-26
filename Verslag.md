@@ -60,15 +60,15 @@ De Depth First Search kan het beste worden gezien als een boom waarin men steeds
 
 De pseudocode van een dergelijk algoritme zou er als volgt uit kunnen zien:
 
-Def DFS(graph, start):
-	stack = [start]
-	visited = []
-	while stack:
-		parent = stack.pop() #pop from end
-		if parent not in visited
-			visited.append(parent)
-			for n in parent.children
-				stack.append(n) #push
+Def DFS(graph, start):<br>
+	stack = [start]<br>
+	visited = []<br>
+	while stack:<br>
+		parent = stack.pop() #pop from end<br>
+		if parent not in visited<br>
+			visited.append(parent)<br>
+			for n in parent.children<br>
+				stack.append(n) #push<br>
 
 <i>Bron: College 18 april</i>
 
