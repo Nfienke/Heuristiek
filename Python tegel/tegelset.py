@@ -1,6 +1,8 @@
 from tilesets import *
-
-
+    """
+    Importeren van een externe file:
+    MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
+    """
 
 class Canvas(object):
     """
