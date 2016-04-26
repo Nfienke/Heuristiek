@@ -123,7 +123,7 @@ De grootste tegel zetten we op de coördinaten 0,0. De plekken waar we tegels ne
 Bovenstaande is nu te ingewikkeld. Onze aanpak nu is om alles gewoon random er in te zetten en als het niet past een stap terug te doen, we moeten dus die boom uitwerken. 
 -gridlines toevoegen in toekomst. 
 
-<b>BRONNEN</b>
+<b>BRONNEN</b><br>
 http://heuristieken.nl/wiki/index.php?title=Tegelzetten<br>
 college 25 april<br>
 survey on two-dimensional packing: http://cgi.csc.liv.ac.uk/~epa/survey.pdf<br>
