@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 from tileSets import *
 
@@ -5,6 +6,13 @@ from tileSets import *
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
+=======
+from tilesets import *
+    """
+    Importeren van een externe file:
+    MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
+    """
+>>>>>>> origin/master
 
 class Canvas(object):
     """
@@ -52,5 +60,9 @@ class Tileset:
 for tile in tileSet1:
     placeTile(tile)
 
+<<<<<<< HEAD
 Tilset()
     
+=======
+    
+>>>>>>> origin/master
