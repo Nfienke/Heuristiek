@@ -1,11 +1,16 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 
 from tileSets import *
 
+=======
+from tileSets import *
+>>>>>>> Stashed changes
 """
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
+<<<<<<< Updated upstream
 =======
 from tilesets import *
     """
@@ -13,8 +18,10 @@ from tilesets import *
     MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
     """
 >>>>>>> origin/master
+=======
+>>>>>>> Stashed changes
 
-class Canvas(object):
+class Canvas():
     """
     The canvas represents the empty space
     that needs to be filled with the tiles.
@@ -53,7 +60,10 @@ x = Canvas(17,17)
 class Tileset:
     """
     """
+     # Sorteren groot naar klein.
+    sortTileSet = []
 
+<<<<<<< Updated upstream
     # Sorteren groot naar klein.
     sortTileSet = []
 
@@ -66,3 +76,23 @@ Tilset()
 =======
     
 >>>>>>> origin/master
+=======
+    
+    
+    for tile in tileSet1:
+    
+        print tile
+        
+    def Tile(name, width, height):
+        """
+        Width, height
+        """
+ 
+Tileset()
+
+        
+        
+
+        
+
+>>>>>>> Stashed changes
