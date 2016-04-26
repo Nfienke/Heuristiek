@@ -12,7 +12,7 @@ class Canvas():
     that needs to be filled with the tiles.
     """
 
-
+    space = []
 
     def __init__ (self, width, height):
         """
@@ -22,6 +22,7 @@ class Canvas():
         self.heightCanvas = height
 
         # maak coordinaten door list van list te maken
+
         space = [[0 for count in range(width)] for count in range(height)]
 
         #prints the canvas with freespace(0)
@@ -45,8 +46,6 @@ class Canvas():
             print row
 
         #updates position of tile in tile class
-    #print space # waarom kent ie space niet?
-    placeTile(2,2)
 
     def findNextPosition():
         """
@@ -90,6 +89,12 @@ class Tile(object):
 def runTileSetter():
 
     canvas = Canvas(17,17)
+    can = Canvas(17,17)
+    print can.space
+
+    print canvas.space # waarom kent ie space niet?
+        #placeTile(2,2)
+
 
     #sorteren van groot naar klein.
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
