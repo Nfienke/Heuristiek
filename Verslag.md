@@ -21,6 +21,21 @@ week 3
 --> bouwcamp code: http://mathworld.wolfram.com/PerfectSquareDissection.html
 --> of gridlines??
 
+Week 4
+Collission map maken: zodat je tegels niet op elkaar plaatst. Een pointer met een tegel maken. in de collission map kan je aangeven dat je een referentie hebt naar dat object/pointer. Als je dan de tegel wil verplaatsen kan je de vakjes op 0 zetten en op de plek waar die moeten komen het omgekeerde doen. De pointer of de reference op die plek zetten. Niet met letters doen, want dan weet je niet waar de tegel begint. Je hebt een A te pakken, maar je weet niet exact waar die zit. Daarom kan je beter een reference naar een object doen. Dat maak je aan als je hem plaatst. Collission map is je canvas. Opgedeeld in blokjes van 1 bij 1. Combinatie van reference en collission map. Een losse lijst bijhouden van al je tegels met of ze geplaatst zijn of niet. In de collission map staat alleen maar waar de tegel geplaatst is. vooral nuttig als je tegels ook wil weghalen van je canvas. 
+
+Maximaal 4 of 5 classes:<br>
+-	Tile: hierin alles over de tile. Hoe groot is hij → properties. Wat voor functies heeft de tile. Wat voor variabelen heeft het. <br>
+-	Canvas: wat kan het canvas. Wat voor variabelen heeft het.<br>
+-	Position<br>
+Database diagrammen. Relaties tussen de tabellen, welke kolommen de tabel heeft en hoe die in relatie tot elkaar staan. Zoiets maken voor een class tabel. 
+→ we hebben de klasse tile, die heeft een x en y die zijn integers. Een hoogte en een breedte. Hij heeft deze variabelen en daarvoor heb ik deze functies nodig om ze te beheersen. 
+Functie rum simulation: initieert het canvas, laad de files, sorteert de tiles. Dan is het canvas en de tiles geladen. Dat is ons entry point. 
+Klasse vormt de datastructuur. 
+
+<b>Deze week: een algoritme schrijven dat iets doet. Hoeft nog niet te werken, maar wel iets doen. </b>
+
+
 ####Inleiding
 Het probleem waar wij ons mee bezig hebben gehouden heet tegelzetten. Zoals de naam al doet vermoeden moeten wij een bepaald aantal tegels van verschillende groottes zetten op een canvas van bepaalde grootte. Het lastige aan dit probleem is dat de tegels precies moeten passen, er mogen geen tussenruimtes tussen de tegels zitten en de tegels mogen ook niet overlappen (website heuristieken). 
 
