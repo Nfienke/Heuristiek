@@ -1,25 +1,20 @@
-<<<<<<< Updated upstream
-<<<<<<< HEAD
+
 
 from tileSets import *
-
-=======
-from tileSets import *
->>>>>>> Stashed changes
 """
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
-<<<<<<< Updated upstream
-=======
-from tilesets import *
-    """
-    Importeren van een externe file:
-    MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
-    """
->>>>>>> origin/master
-=======
->>>>>>> Stashed changes
+
+class Position(object):
+
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def getX(self):
+        return self.x
+    def getY(self):
+        return self.y
 
 class Canvas():
     """
@@ -38,61 +33,38 @@ class Canvas():
         for row in space:
             print row
         print '\n'
-       
-        def placeTile(startX, startY, Tile)
-            startX = 3
-            startY = 3 
-            for i in range(tileHeight):
-                for j in range (tileWidth):
-                    if (space[startY + i][startX + j] == 1):
-                        return False
-                    
-                    space[startY + i][startX + j] = 1
-            
-            for row in space:
-                print row
 
-        
-x = Canvas(17,17)
+    def placeTile(self,tileHeight, tileWidth):
+        startX = 3
+        startY = 3
+
+        for i in range(tileHeight):
+            for j in range (tileWidth):
+                if (space[startY + i][startX + j] == 1):
+                    return False
+
+                space[startY + i][startX + j] = 1
+
+        for row in space:
+            print row
+
+
+Canvas = Canvas(17,17)
 
 
 
 class Tileset:
     """
     """
+    sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
      # Sorteren groot naar klein.
-    sortTileSet = []
+    #sortTileSet
 
-<<<<<<< Updated upstream
-    # Sorteren groot naar klein.
-    sortTileSet = []
 
-for tile in tileSet1:
-    placeTile(tile)
 
-<<<<<<< HEAD
-Tilset()
-    
-=======
-    
->>>>>>> origin/master
-=======
-    
-    
-    for tile in tileSet1:
-    
-        print tile
-        
-    def Tile(name, width, height):
-        """
-        Width, height
-        """
- 
+    for tile in sortTileSet:
+
+        Canvas.placeTile(2,2)
+
+
 Tileset()
-
-        
-        
-
-        
-
->>>>>>> Stashed changes
