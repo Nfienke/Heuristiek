@@ -123,4 +123,14 @@ De grootste tegel zetten we op de coördinaten 0,0. De plekken waar we tegels ne
 Bovenstaande is nu te ingewikkeld. Onze aanpak nu is om alles gewoon random er in te zetten en als het niet past een stap terug te doen, we moeten dus die boom uitwerken. 
 -gridlines toevoegen in toekomst. 
 
+<b>BRONNEN</b>
+http://heuristieken.nl/wiki/index.php?title=Tegelzetten<br>
+college 25 april<br>
+survey on two-dimensional packing: http://cgi.csc.liv.ac.uk/~epa/survey.pdf<br>
+A tale of two dimensional bin-packing: http://www2.warwick.ac.uk/fac/sci/dcs/people/maxim_sviridenko/Bansal-packing.pdf<br>
+College 18 april<br>
+Mehlhorn, Kurt; Sanders, Peter (2008). Algorithms and Data Structures: The Basic Toolbox (PDF). Springer : http://people.mpi-inf.mpg.de/~mehlhorn/ftp/Toolbox/GraphTraversal.pdf<br>
+
+
+
 
