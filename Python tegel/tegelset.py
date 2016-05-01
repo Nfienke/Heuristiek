@@ -19,12 +19,12 @@ class Canvas():
         self.heightCanvas = height
 
 
-        # maak coordinaten door list van list te maken
+        # maak coordinaten door een list van list te maken
 
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
-        # zoek de volgende positie
+        # zoekt de volgende positie
         start = self.findNextPosition()
 
         # geef x en y coordinaat om tegel neer te zetten
@@ -140,10 +140,10 @@ def runTileSetter():
         # zet tegel in canvas
         canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth)
 
-runTileSetter()
+#runTileSetter()
 
     #Loopt door de tileset.
     # for tile in sortTileSet:
-    #     Tile(tile)
+    #      Tile(tile)
 
-#runTileSetter()
+runTileSetter()
