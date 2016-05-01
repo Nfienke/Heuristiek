@@ -12,35 +12,35 @@ class Canvas():
 
     def __init__ (self, width, height):
         """
-        the
+        creates the canvas
         """
         self.widthCanvas = width
         self.heightCanvas = height
-
 
         # maak coordinaten door list van list te maken
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
-        # zoek de volgende positie
+        # zoek de volgende positie van de tegel
         start = self.findNextPosition()
-        
+
         # geef x en y coordinaat om tegel neer te zetten
         startX = start[0]
         startY = start[1]
 
-        # ga af of de tegel past op elke coordinaat 
+        # ga af of de tegel past op elke coordinaat
         for i in range(tileHeight):
             for j in range (tileWidth):
                 if self.space[startY + i][startX + j] != 0 or tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
                     print "past niet"
                     return False
 
-                # zet tegel neer
+                # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
-                 
+                #verwijder de tegel uit de lijst met opties
+                #loop weer door de lijst met tegels van groot naar klein.
 
-        # print canvas
+        # print canvas (aparte functie worden --> visualize canvas).
         for row in self.space:
             print row
         print '\n'
@@ -58,7 +58,7 @@ class Canvas():
             else
                 go back to try next position
         """
-        
+
         # ga de canvas af
         for i in range(self.heightCanvas):
             for j in range(self.widthCanvas):
@@ -77,10 +77,10 @@ class Tile(object):
         self.tileHeight = tile[2]
         self.tileWidth = tile[1]
         self.tileName = tile[0]
-        
+
         #aanroepen placetile functie
         #self.canvas = Canvas(17,17)
-        
+
         #print self.tileName, self.tileWidth, self.tileHeight
 
     #begin positie van de tegel in Canvas.
