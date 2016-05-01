@@ -35,8 +35,14 @@ Klasse vormt de datastructuur.
 
 <b>Deze week: een algoritme schrijven dat iets doet. Hoeft nog niet te werken, maar wel iets doen. </b>
 
+week 5
+Algortime moet werken deze week!!
+
 
 ####Inleiding
+
+<i(Hier  schrijf  je  een  inleiding  die  in  elk  geval  kort,bondig en  compleet de  hele vraagstelling bevat. Ook moet er een inschatting komen van de toestandsruimtegrootte(belangrijk,   daar   deden   we   het   voor),   en eventuele   restricties   op   transities   in beschreven worden, maar nog niet de methodes die je gebruikt om de toestandsruimte te doorzoeken.</i>
+
 Het probleem waar wij ons mee bezig hebben gehouden heet tegelzetten. Zoals de naam al doet vermoeden moeten wij een bepaald aantal tegels van verschillende groottes zetten op een canvas van bepaalde grootte. Het lastige aan dit probleem is dat de tegels precies moeten passen, er mogen geen tussenruimtes tussen de tegels zitten en de tegels mogen ook niet overlappen (website heuristieken). 
 
 Dit maakt het probleem een constraint satisfaction probleem. Er moet worden voldaan aan een  aantal voorwaarden, de oplossing is goed zodra hier aan is voldaan. Er zijn daarom geen goede of slechte oplossingen, alle oplossingen zijn even goed (college 25 april).	
@@ -47,7 +53,7 @@ Dit two-dimensional bin packing problem sluit echter niet helemaal aan op ons pr
 
 
 
-####State space
+######State space
 
 De moeilijkheid van het probleem zit hem vooral in de grootte van de state space.
 De upperbound van het tegelzetprobleem is normaal N!, maar door het vooraf sorteren van de items op grootte is de eerste stap al bepaald. Dit maakt de upperbound kleiner, de upperbound is dan N-1!. Ookal is de state space nu wel iets kleiner, het aantal opties is nog steeds zeer groot. 
@@ -68,7 +74,11 @@ PATRONEN HELDER, bouwcamp/gridlines nog meer??)
 
 
 
-####Algoritme
+####Methode
+
+<i>In  deze  paragraaf beschrijf  je  de  methodes  die  je  hebt  gebruikt,  liefst  in  de  volgorde waarin je  ze hebttoegepast(in dit geval drie). Die hoeft  niet per sé te kloppen met de tijdsvolgorde, echte wetenschappers proberen ook vanalles door elkaar. Wat wél moet kloppenzijnde details van de algoritmes, en de bijbehorende resultaten in de volgende paragraaf. Je moet zoveel informatie geven dat je experiment in principe herhaalbaar is, en  je  resultaten  reproduceerbaar,  ook  je  algoritme  een  stochastisch  element  (random-functie) bevat. Echte stoere mensen maken al hun resultaten, data en sourcecode ook online beschikbaar. Dat is nu nog niet overal gangbaar, maar gaat het wel worden (mijn inschatting)</i>
+
+######Depth First search
 Voor ons algoritme maken we gebruik van de Depth First Search (DFS), waarin we onze items vooraf sorteren op grootte. DFS algoritmes zijn constructief, ze worden stap voor stap opgebouwd en alle mogelijkheden worden afgegaan, dit noemen we brute force. Uiteindelijk zal het algoritme een oplossing terug geven, of een ‘oplossing bestaat niet’, het is dus een compleet algoritme. Het verschil met de Breadth First Search zit met name in de snelheid en het aantal geheugen dat wordt gebruikt. Breadt First wordt vaak gebruikt voor optimalisatie problemen, en daar zijn wij niet mee bezig  (college 18 april).
 
 De Depth First Search kan het beste worden gezien als een boom waarin men steeds een tak volgt waar aan het einde ofwel een oplossing is, ofwel geen oplossing. Als er geen oplossing is aan het einde van de tak moet men terugzoeken naar de laatste vertakking en deze vertakking afgaan, enzovoort (zie afbeeld n). De punt waar vertakkingen ontstaan noemen we nodes, alle nodes zijn in eerste instantie ongemarkeerd. In de code van een dergelijk algoritme moet men wel verwerken of een node al eerder bezocht is of niet, zodat er steeds naar een nieuwe vertakking wordt gezocht(K. Mehlhorn en P. Sanders, 2008: 178). 
@@ -90,7 +100,7 @@ Def DFS(graph, start):<br>
 
 
 
-####DATASTRUCTUUR
+######DATASTRUCTUUR
 
 <b>Tileset</b>
 
@@ -130,13 +140,23 @@ Canvas= <br>
 
 Doordat de rijen onder elkaar geprint worden, is het ook visueel snel duidelijk waar nog ruimte over is en hoe de tegels geplaatst zijn. Je loopt door het canvas heen en als Canvas[0][1]==0 is, dan weet je dat deze plek vrij is om te plaatsen. 
 
-####MODELLEREN
+######MODELLEREN
 
 We hebben een canvas waarop de tegels geplaatst moeten worden. We hebben ook een set met tegels van verschillende groottes. 
 We willen eerst die tegelsets sorteren van groot naar klein. 
 De grootste tegel zetten we op de coördinaten 0,0. De plekken waar we tegels neer zetten is used space. Het stuk canvas dat over blijft noemen we free space. De blokken die in de free space vrij staan zetten we ook in een array met coördinaten. 
 Bovenstaande is nu te ingewikkeld. Onze aanpak nu is om alles gewoon random er in te zetten en als het niet past een stap terug te doen, we moeten dus die boom uitwerken. 
 -gridlines toevoegen in toekomst. 
+
+####Resultaten
+<i>Hierbespreek  je  heel  droog  je  resultaten.  Als  je  statistieken  hebt:  toevoegen.  Als  je vergelijkingen hebt met randomposities: toevoegen. Alles is woord en getal, alledetails en het liefst ook het één en ander in grafieken, plaatjes of anderzins.</i>
+
+####Conclusie
+<i>Hier schrijf je je conclusies, eventuele overdenkingen (hoe zou het nog beter kunnen, is het algoritme ook in andere gebieden toepasbaar).</i>
+
+####Referenties
+<i>Als je literatuur hebt gebruikt, hier toevoegen. Als je eraan refereert in de tekst, zet je op die  plek  alleen  [1],  zodat  mensen  achterin  de  details  kunnen  vinden.  Als  je  geen literatuur gebruikt, weglaten. 024681012141234567Gemiddeld aantal Misfits in puzzelIteratie (x1000)Algoritmische performance vergelekenIterative DeepeningA* lateralBIDIBENCH
+Wat  ook  nog  kan  is  een  dankwoord,  bijvoorbeeld  voor  mensen  die  wel  geholpen hebben  maar  geen  auteur  zijn,  mensen  die  je  een  inzicht  hebben  gegeven,  of administrators  die  je  even  hun  supercomputer  hebben  laten  gebruiken.  Altijd  naam  en bedrijf noemen en zorgen dat de bedankte persoon zich er goed over voelt. Als je  zowel een dankwoord als een referentiesectie hebt: de referentiesectie is *altijd* het laatste onderdeel van je verslag</i>
 
 <b>BRONNEN</b><br>
 http://heuristieken.nl/wiki/index.php?title=Tegelzetten<br>
