@@ -35,6 +35,9 @@ Klasse vormt de datastructuur.
 
 <b>Deze week: een algoritme schrijven dat iets doet. Hoeft nog niet te werken, maar wel iets doen. </b>
 
+week 5
+Algortime moet werken deze week!!
+
 
 ####Inleiding
 
