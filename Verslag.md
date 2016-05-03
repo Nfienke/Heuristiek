@@ -35,9 +35,21 @@ Klasse vormt de datastructuur.
 
 <b>Deze week: een algoritme schrijven dat iets doet. Hoeft nog niet te werken, maar wel iets doen. </b>
 
-week 5
-Algortime moet werken deze week!!
+Week 5:<br>
+Remove: tuple geven, en dan haalt hij er daar eentje van uit. → python lists.<br>
+While not done: #zitten er nog tegels in de lijst?<br>
+        For tegel in tegels:<br>
+                Plaats tegel<br>
+                If succes:<br>
+                     Break #haal tegel uit de lijst, en ga terug naar de lijst.<br>
+                Else:<br>
+                     Continue<br>
+<br>
+Overige algoritmes: score bijhouden voor plaatsing, wat is een betere en wat is een slechtere plek? En dan eerst op alle goede plekken tegels zetten. Dat hebben we impliciet al omdat we met de grootste beginnen. Ook testen: met de kleinste beginnen → tunen. 
 
+Elke staat opslaan, zodat je naar elke staat terug kan, in plaats van dat je helemaal opnieuw moet beginnen. 
+
+<b>Deze week: dictionary waarin we posities tegels opslaan. Als alle tegels uit de lijst doorgelopen zijn, moeten we een stap terug in de dictionary en iets nieuws proberen. </b>
 
 ####Inleiding
 
@@ -86,14 +98,14 @@ De Depth First Search kan het beste worden gezien als een boom waarin men steeds
 De pseudocode van een dergelijk algoritme zou er als volgt uit kunnen zien:
 
 Def DFS(graph, start):<br>
-	stack = [start]<br>
-	visited = []<br>
-	while stack:<br>
-		parent = stack.pop() #pop from end<br>
-		if parent not in visited<br>
-			visited.append(parent)<br>
-			for n in parent.children<br>
-				stack.append(n) #push<br>
+        stack = [start]<br>
+        visited = []<br>
+        while stack:<br>
+                parent = stack.pop() #pop from end<br>
+                if parent not in visited<br>
+                        visited.append(parent)<br>
+                        for n in parent.children<br>
+                              stack.append(n) #push<br>
 
 <i>Bron: College 18 april</i>
 
