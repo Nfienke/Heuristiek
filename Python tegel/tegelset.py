@@ -21,7 +21,10 @@ class Canvas():
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
+<<<<<<< HEAD
         tiles = Tile
+=======
+>>>>>>> origin/master
         # zoek de volgende positie van de tegel
         start = self.findNextPosition()
 
@@ -39,11 +42,17 @@ class Canvas():
 
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
+<<<<<<< HEAD
                 
                 
 
                 #verwijder de tegel uit de lijst met opties
                 #loop weer door de lijst met tegels van groot naar klein.
+=======
+                #verwijder de tegel uit de lijst met opties
+                #loop weer door de lijst met tegels van groot naar klein.
+
+>>>>>>> origin/master
         # print canvas (aparte functie worden --> visualize canvas).
         for row in self.space:
             print row
@@ -83,6 +92,14 @@ class Tile(object):
         self.tileHeight = tile[2]
         self.tileWidth = tile[1]
         self.tileName = tile[0]
+<<<<<<< HEAD
+=======
+
+        #aanroepen placetile functie
+        #self.canvas = Canvas(17,17)
+
+        #print self.tileName, self.tileWidth, self.tileHeight
+>>>>>>> origin/master
 
         #sorteren van groot naar klein.
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
@@ -100,6 +117,7 @@ def runTileSetter():
 
     canvas = Canvas(17,17)
     #Loopt door de tileset.
+<<<<<<< HEAD
     
     while tiles.sortTileSet: 
         tiles.index = 0
@@ -111,3 +129,12 @@ def runTileSetter():
             tiles.index += 1
             print tile
 runTileSetter()
+=======
+    for tile in sortTileSet:
+        #geeft elke tile eigenschappen
+        t = Tile(tile)
+        # zet tegel in canvas
+        canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth)
+
+runTileSetter()
+>>>>>>> origin/master
