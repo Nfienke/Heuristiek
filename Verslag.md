@@ -49,7 +49,7 @@ Overige algoritmes: score bijhouden voor plaatsing, wat is een betere en wat is 
 
 Elke staat opslaan, zodat je naar elke staat terug kan, in plaats van dat je helemaal opnieuw moet beginnen. 
 
-<b>Deze week & volgende week: algoritme uitwerken. Uitproberen. Tunen. </b>
+<b>Deze week: dictionary waarin we posities tegels opslaan. Als alle tegels uit de lijst doorgelopen zijn, moeten we een stap terug in de dictionary en iets nieuws proberen. </b>
 
 ####Inleiding
 
