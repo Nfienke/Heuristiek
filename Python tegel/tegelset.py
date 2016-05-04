@@ -30,7 +30,6 @@ class Canvas():
         startY = start[1]
 
         # ga af of de tegel past op elke coordinaat
-
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             print "past niet"
             return False
@@ -46,23 +45,26 @@ class Canvas():
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
 
+        # print canvas
+        self.visualizeCanvas()
 
-
-        #verwijder de tegel uit de lijst met opties
-        #loop weer door de lijst met tegels van groot naar klein.
-        # print canvas (aparte functie worden --> visualize canvas).
-        for row in self.space:
-            print row
-        print '\n'
         #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
         tiles.sortTileSet.pop(tiles.index)
         #print tiles.sortTileSet
-        #Roept functie aan om coordinaten per tegel op te slaan. 
+
+        #Roept functie aan om coordinaten per tegel op te slaan.
         coor = self.saveCoordinates(tileName, startX, startY)
-        print coor
+        #print coor
+
+        #begint met zoeken voor een tegel voor de volgende positie.
         return True
 
         #updates position of tile in tile class
+    def visualizeCanvas(self):
+        for row in self.space:
+            print row
+        print '\n'
+
 
     def saveCoordinates(self, tileName, coorX, coorY):
         tiles = Tile
