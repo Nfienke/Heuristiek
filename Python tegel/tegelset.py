@@ -33,13 +33,13 @@ class Canvas():
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             print "past niet"
             return False
-
+        #checkt of...
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
                 print "past ook niet"
                 return False
 
-
+        #checkt of...
         for i in range(tileHeight):
             for j in range (tileWidth):
                 # als de tegel past wordt hij de tegel neergezet.
@@ -126,7 +126,9 @@ def runTileSetter():
 
     while tiles.sortTileSet:
         tiles.index = 0
+        i = 0
         for tile in tiles.sortTileSet:
+
             print tile
             #geeft elke tile eigenschappen
             t = Tile(tile)
@@ -134,5 +136,9 @@ def runTileSetter():
             if canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth):
                 break
             tiles.index += 1
+
+            # als alle opties voor een positie niet kunnen dan stopt hij.
+            if tiles.index == len(tiles.sortTileSet):
+                return False
 
 runTileSetter()
