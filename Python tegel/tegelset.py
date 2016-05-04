@@ -30,19 +30,19 @@ class Canvas():
         startY = start[1]
 
         # ga af of de tegel past op elke coordinaat
-        
+
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             print "past niet"
             return False
-              
+
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
                 print "past ook niet"
                 return False
-                   
-                
+
+
         for i in range(tileHeight):
-            for j in range (tileWidth):            
+            for j in range (tileWidth):
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
 
@@ -54,11 +54,24 @@ class Canvas():
         for row in self.space:
             print row
         print '\n'
+        #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
         tiles.sortTileSet.pop(tiles.index)
-        print tiles.sortTileSet
+        #print tiles.sortTileSet
+        #Roept functie aan om coordinaten per tegel op te slaan. 
+        coor = self.saveCoordinates(tileName, startX, startY)
+        print coor
         return True
 
         #updates position of tile in tile class
+
+    def saveCoordinates(self, tileName, coorX, coorY):
+        tiles = Tile
+
+        coordinate = (tileName, coorX, coorY)
+        tiles.Coordinates.append(coordinate)
+
+        return tiles.Coordinates
+
 
     def findNextPosition(self):
         """
@@ -93,12 +106,12 @@ class Tile(object):
 
 
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
-
+    #Lijst van coordinaten per tegel.
+    Coordinates = []
     index = 0
 
-    #begin positie van de tegel in Canvas.
-    YPosition = []
-    XPosition = []
+
+
 
 def runTileSetter():
 
