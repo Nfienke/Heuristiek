@@ -50,17 +50,15 @@ class Canvas():
 
         #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
         tiles.sortTileSet.pop(tiles.index)
-        #print tiles.sortTileSet
 
         #Roept functie aan om coordinaten per tegel op te slaan.
         coor = self.saveCoordinates(tileName, startX, startY)
-        #print coor
 
         #begint met zoeken voor een tegel voor de volgende positie.
         return True
 
-        #updates position of tile in tile class
     def visualizeCanvas(self):
+
         for row in self.space:
             print row
         print '\n'
@@ -96,6 +94,9 @@ class Canvas():
 
     def removeTile():
         print "leeg"
+        #verwijdert laatst gezette tegel
+        #voegt tegel weer toe aan de Lijst
+        #dan mag je weer proberen maar niet die tegel zeg maar...
 
 class Tile(object):
     """
@@ -139,6 +140,9 @@ def runTileSetter():
 
             # als alle opties voor een positie niet kunnen dan stopt hij.
             if tiles.index == len(tiles.sortTileSet):
+                print tiles.Coordinates
+                #remove laats gezette tegel??
+                #canvas.removeTile()
                 return False
 
 runTileSetter()
