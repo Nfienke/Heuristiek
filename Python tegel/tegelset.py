@@ -55,7 +55,7 @@ class Canvas():
         coor = self.saveCoordinates(tileName, startX, startY)
 
         #begint met zoeken voor een tegel voor de volgende positie.
-        
+        return True
 
     def visualizeCanvas(self):
 
@@ -130,8 +130,31 @@ class Canvas():
         #print tiles.sortTileSet
         #opnieuw sorteren?
 
+        self.newTile()
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
-        return True
+        #return True
+
+    def newTile(self):
+        tiles = Tile
+        canvas = Canvas
+        index = 0
+        print "test"
+
+        for tile in tiles.sortTileSet:
+            t = Tile(tile)
+            print"hier2"
+            #lasttilewidth ipv 4
+            if t.tileWidth != 4:
+                print t.tileName
+                canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth)
+
+                index += 1
+
+            if index == len(tiles.sortTileSet):
+                print "hier"
+                return False
+
+
 
 class Tile(object):
     """
