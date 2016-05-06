@@ -149,8 +149,11 @@ class Canvas():
 
                 if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
                     print "hello"
-                    break
-                    #terug naar vorige loop?!?!
+                    self.runTileSetter()
+                    ###
+
+                    #terug naar vorige loop?!?hoe gaat hij dan weer normaal verder.?!
+                    #####
                     return True
 
             index += 1
@@ -160,6 +163,33 @@ class Canvas():
                 print "hier2"
                 self.removeTile()
                 return False
+
+    def runTileSetter(self):
+
+        tiles = Tile
+        #canvas = Canvas
+
+        #Loopt door de tiles set en....
+        while tiles.sortTileSet:
+            tiles.index = 0
+            i = 0
+
+            for tile in tiles.sortTileSet:
+                print tile
+                #geeft elke tile eigenschappen
+                t = Tile(tile)
+                # zet tegel in canvas
+                if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
+                    break
+                tiles.index += 1
+
+                # als alle opties voor een positie niet kunnen dan stopt hij.
+                if tiles.index == len(tiles.sortTileSet):
+                    print tiles.Coordinates
+
+                    #remove laats gezette tegel??
+                    self.removeTile()
+                    return False
 
 
 
@@ -178,34 +208,36 @@ class Tile(object):
     Coordinates = []
     index = 0
 
+def settingCanvas():
 
-
-
-def runTileSetter():
-
-    tiles = Tile
     canvas = Canvas(17,17)
+    canvas.runTileSetter()
 
-    #Loopt door de tiles set en....
-    while tiles.sortTileSet:
-        tiles.index = 0
-        i = 0
+# def runTileSetter():
+#
+#     tiles = Tile
+#     canvas = Canvas
+#
+#     #Loopt door de tiles set en....
+#     while tiles.sortTileSet:
+#         tiles.index = 0
+#         i = 0
+#
+#         for tile in tiles.sortTileSet:
+#             print tile
+#             #geeft elke tile eigenschappen
+#             t = Tile(tile)
+#             # zet tegel in canvas
+#             if canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth):
+#                 break
+#             tiles.index += 1
+#
+#             # als alle opties voor een positie niet kunnen dan stopt hij.
+#             if tiles.index == len(tiles.sortTileSet):
+#                 print tiles.Coordinates
+#
+#                 #remove laats gezette tegel??
+#                 canvas.removeTile()
+#                 return False
 
-        for tile in tiles.sortTileSet:
-            print tile
-            #geeft elke tile eigenschappen
-            t = Tile(tile)
-            # zet tegel in canvas
-            if canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth):
-                break
-            tiles.index += 1
-
-            # als alle opties voor een positie niet kunnen dan stopt hij.
-            if tiles.index == len(tiles.sortTileSet):
-                print tiles.Coordinates
-
-                #remove laats gezette tegel??
-                canvas.removeTile()
-                return False
-
-runTileSetter()
+settingCanvas()
