@@ -105,7 +105,7 @@ class Canvas():
 
         #verwijdert laatst gezsette tegel uit coordinaten:
         tiles.Coordinates.pop(lastIndex-1)
-        print tiles.Coordinates
+        #print tiles.Coordinates
 
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
         for i in tileSet1:
@@ -127,15 +127,11 @@ class Canvas():
 
         #voegt tegel weer toe aan de Lijst sorttileset:
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
-        print tiles.sortTileSet
+        #print tiles.sortTileSet
         #opnieuw sorteren?
-        
-        #dan mag je weer proberen maar niet die tegel zeg maar...
 
-
-    def findNewtile(self):
-        start = self.removeTile()
-        print start
+        #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
+            
 
 class Tile(object):
     """
