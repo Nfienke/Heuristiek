@@ -55,7 +55,7 @@ class Canvas():
         coor = self.saveCoordinates(tileName, startX, startY)
 
         #begint met zoeken voor een tegel voor de volgende positie.
-        return True
+        
 
     def visualizeCanvas(self):
 
@@ -131,7 +131,7 @@ class Canvas():
         #opnieuw sorteren?
 
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
-            
+        return True
 
 class Tile(object):
     """
@@ -154,20 +154,14 @@ class Tile(object):
 def runTileSetter():
 
     tiles = Tile
-
-    #print tiles.sortTileSet
-
     canvas = Canvas(17,17)
-    #Loopt door de tiles et.
 
-
-
-
+    #Loopt door de tiles set en....
     while tiles.sortTileSet:
         tiles.index = 0
         i = 0
-        for tile in tiles.sortTileSet:
 
+        for tile in tiles.sortTileSet:
             print tile
             #geeft elke tile eigenschappen
             t = Tile(tile)
