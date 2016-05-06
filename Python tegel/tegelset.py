@@ -92,9 +92,13 @@ class Canvas():
                 if self.space[i][j] == 0:
                     return (j,i)
 
-    def removeTile():
-        print "leeg"
-        #verwijdert laatst gezette tegel
+    def removeTile(self):
+
+        tiles = Tile
+        for tile in tiles.Coordinates:
+            lasttile = tile
+        print "laatste gezette tegel",lasttile
+        #verwijdert laatst gezsette tegel
         #voegt tegel weer toe aan de Lijst
         #dan mag je weer proberen maar niet die tegel zeg maar...
 
@@ -141,8 +145,9 @@ def runTileSetter():
             # als alle opties voor een positie niet kunnen dan stopt hij.
             if tiles.index == len(tiles.sortTileSet):
                 print tiles.Coordinates
+
                 #remove laats gezette tegel??
-                #canvas.removeTile()
+                canvas.removeTile()
                 return False
 
 runTileSetter()
