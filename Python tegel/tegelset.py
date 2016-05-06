@@ -130,26 +130,27 @@ class Canvas():
         #print tiles.sortTileSet
         #opnieuw sorteren?
 
-        self.newTile()
+        self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
         #return True
 
-    def newTile(self):
+    def newTile(self, lasttilewidth):
         tiles = Tile
         canvas = Canvas
         index = 0
         print "test"
+        print lasttilewidth
 
         for tile in tiles.sortTileSet:
             t = Tile(tile)
 
             #lasttilewidth ipv 3
-            if t.tileWidth != 3:
+            if t.tileWidth != lasttilewidth:
 
                 if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
                     print "hello"
                     break
-                    #terug naar vorige loop
+                    #terug naar vorige loop?!?!
                     return True
 
             index += 1
