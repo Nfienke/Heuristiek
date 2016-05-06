@@ -123,12 +123,13 @@ class Canvas():
                 self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
 
         # print canvas
-        self.visualizeCanvas()
+        #self.visualizeCanvas()
 
         #voegt tegel weer toe aan de Lijst sorttileset:
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
         #print tiles.sortTileSet
         #opnieuw sorteren?
+        sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
 
         self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
