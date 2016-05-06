@@ -39,7 +39,7 @@ class Canvas():
                 print "past ook niet"
                 return False
 
-        #checkt of...
+        #plaatst de tegel.
         for i in range(tileHeight):
             for j in range (tileWidth):
                 # als de tegel past wordt hij de tegel neergezet.
@@ -95,12 +95,47 @@ class Canvas():
     def removeTile(self):
 
         tiles = Tile
+        lastIndex = 0
+        #Zoekt de laast geplaatste tegel.
         for tile in tiles.Coordinates:
-            lasttile = tile
-        print "laatste gezette tegel",lasttile
-        #verwijdert laatst gezsette tegel
-        #voegt tegel weer toe aan de Lijst
+            lastIndex+=1
+            lasttilepos = tile
+        #print "laatste gezette tegel",lasttilepos
+        #print lasttilepos[1],lasttilepos[2]
+
+        #verwijdert laatst gezsette tegel uit coordinaten:
+        tiles.Coordinates.pop(lastIndex-1)
+        print tiles.Coordinates
+
+        #zoekt de laatste tegel op naam in tileset voor de afmetingen.
+        for i in tileSet1:
+            if i[0] == lasttilepos[0]:
+                lasttile = i
+        #afmetingen laastst geplaatste tegel.
+        lasttileheight = lasttile[2]
+        lasttilewidth = lasttile[1]
+                #print lasttile
+
+        #tegel wordt verwijdert uit het canvas
+        for i in range(lasttileheight):
+            for j in range (lasttilewidth):
+                # als de tegel past wordt hij de tegel neergezet.
+                self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
+
+        # print canvas
+        self.visualizeCanvas()
+
+        #voegt tegel weer toe aan de Lijst sorttileset:
+        tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
+        print tiles.sortTileSet
+        #opnieuw sorteren?
+        
         #dan mag je weer proberen maar niet die tegel zeg maar...
+
+
+    def findNewtile(self):
+        start = self.removeTile()
+        print start
 
 class Tile(object):
     """
@@ -127,7 +162,10 @@ def runTileSetter():
     #print tiles.sortTileSet
 
     canvas = Canvas(17,17)
-    #Loopt door de tileset.
+    #Loopt door de tiles et.
+
+
+
 
     while tiles.sortTileSet:
         tiles.index = 0
