@@ -147,7 +147,8 @@ class Canvas():
             if t.tileWidth != 3:
 
                 if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
-                    break
+                    #terug naar vorige loop
+                    return True
 
             index += 1
             print index, len(tiles.sortTileSet)
