@@ -48,7 +48,7 @@ class Canvas():
                 self.space[startY + i][startX + j] = tileName
 
         # print canvas
-        #self.visualizeCanvas()
+        self.visualizeCanvas()
 
         #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
         tiles.sortTileSet.pop(tiles.index)
@@ -127,7 +127,7 @@ class Canvas():
                 self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
 
         # print canvas
-        #self.visualizeCanvas()
+        self.visualizeCanvas()
 
         self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
