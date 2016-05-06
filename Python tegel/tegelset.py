@@ -129,7 +129,7 @@ class Canvas():
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
         #print tiles.sortTileSet
         #opnieuw sorteren?
-        sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
+        tiles.sortTileSet = sorted(tiles.sortTileSet, key=lambda x: x[1],  reverse=True)
 
         self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
