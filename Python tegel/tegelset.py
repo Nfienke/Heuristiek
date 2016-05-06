@@ -142,16 +142,18 @@ class Canvas():
 
         for tile in tiles.sortTileSet:
             t = Tile(tile)
-            print"hier2"
-            #lasttilewidth ipv 4
-            if t.tileWidth != 4:
-                print t.tileName
-                canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth)
 
-                index += 1
+            #lasttilewidth ipv 3
+            if t.tileWidth != 3:
+
+                if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
+                    break
+
+            index += 1
+            print index, len(tiles.sortTileSet)
 
             if index == len(tiles.sortTileSet):
-                print "hier"
+                self.removeTile()
                 return False
 
 
