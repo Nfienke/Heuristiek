@@ -107,7 +107,6 @@ class Canvas():
         #verwijdert laatst gezsette tegel uit coordinaten:
         tiles.Coordinates.pop(lastIndex-1)
 
-
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
         for i in tileSet1:
             if i[0] == lasttilepos[0]:
@@ -148,10 +147,7 @@ class Canvas():
 
                 if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
                     self.runTileSetter()
-                    ###
 
-                    #terug naar vorige loop?!?hoe gaat hij dan weer normaal verder.?!
-                    #####
                     return True
 
             index += 1
