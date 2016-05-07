@@ -15,7 +15,7 @@ class Canvas():
 
     def __init__ (self, width, height):
         """
-        creates the canvas
+        creates the empty canvas
         """
         self.widthCanvas = width
         self.heightCanvas = height
@@ -31,33 +31,37 @@ class Canvas():
         # geef x en y coordinaat om tegel neer te zetten
         startX = start[0]
         startY = start[1]
+        print tiles.sortTileSet
 
-        # ga af of de tegel past op elke coordinaat
+        # kijkt of de tegel wel binnen het canvas past.
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             return False
-
-        #checkt of...
+        #print"hello2"
+        #checkt of de tegel er geheel in past.
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
                 return False
 
         coortile = (tileName, startX, startY)
-
-        if coortile in tiles.Coordinates:
-            print "been there, done that"
+        #print coortile
+        #print"hello"
+        if coortile in tiles.allTriedCoordinates:
+            #print "been there, done that"
             return False
 
-        #plaatst de tegel.
+        #plaatst de tegel indien het niet false is.
         for i in range(tileHeight):
             for j in range (tileWidth):
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
 
+        #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
+        tiles.sortTileSet.pop(tiles.index)
+
         # print canvas
         self.visualizeCanvas()
 
-        #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
-        tiles.sortTileSet.pop(tiles.index)
+
 
         #Roept functie aan om coordinaten per tegel op te slaan.
         coor = self.saveCoordinates(tileName, startX, startY)
@@ -76,9 +80,10 @@ class Canvas():
         tiles = Tile
 
         coordinate = (tileName, coorX, coorY)
-        tiles.Coordinates.append(coordinate)
+        tiles.placedCoordinates.append(coordinate)
+        tiles.allTriedCoordinates.append(coordinate)
 
-        return tiles.Coordinates
+        return tiles.placedCoordinates, tiles.allTriedCoordinates
 
 
     def findNextPosition(self):
@@ -101,17 +106,19 @@ class Canvas():
                     return (j,i)
 
     def removeTile(self):
+        """
+        zoekt de laatst geplaatste tegel en verwijdert deze uit het canvas
+        en voegt hem toe aan de lijst met mogelijk tegels(sorttileset)
+        """
 
         tiles = Tile
-        lastIndex = 0
 
+        lindex = 0
         #Zoekt de laast geplaatste tegel.
-        for tile in tiles.Coordinates:
-            lastIndex+=1
+        for tile in tiles.placedCoordinates:
+            lindex += 1
             lasttilepos = tile
-
-        #verwijdert laatst gezsette tegel uit coordinaten:
-        tiles.Coordinates.pop(lastIndex-1)
+        tiles.placedCoordinates.pop(lindex -1)
 
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
         for i in tileSet1:
@@ -121,10 +128,11 @@ class Canvas():
         lasttileheight = lasttile[2]
         lasttilewidth = lasttile[1]
         #voegt tegel weer toe aan de Lijst sorttileset:
+        print "hoe vaak"
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
         #opnieuw sorteren?
         tiles.sortTileSet = sorted(tiles.sortTileSet, key=lambda x: x[1],  reverse=True)
-        print tiles.sortTileSet
+        #print tiles.sortTileSet
 
         #tegel wordt verwijdert uit het canvas
         for i in range(lasttileheight):
@@ -132,36 +140,18 @@ class Canvas():
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
 
+
         # print canvas
         self.visualizeCanvas()
 
-        self.newTile(lasttilewidth)
+        #self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
-        #return True
+        self.runTileSetter()
 
-    def newTile(self, lasttilewidth):
-        tiles = Tile
-        canvas = Canvas
-        index = 0
-        #print "test"
-        #print lasttilewidth
 
-        for tile in tiles.sortTileSet:
-            t = Tile(tile)
+    # moeten checken ook op tile breedte welke al op die positie is geweest om het efficienter te maken.
+    #         if t.tileWidth != lasttilewidth:
 
-            if t.tileWidth != lasttilewidth:
-
-                if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
-                    self.runTileSetter()
-
-                    return True
-
-            index += 1
-
-            if index == len(tiles.sortTileSet):
-                #print "hier2"
-                self.removeTile()
-                return False
 
     def runTileSetter(self):
 
@@ -204,7 +194,10 @@ class Tile(object):
 
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
     #Lijst van coordinaten per tegel.
-    Coordinates = []
+    placedCoordinates = []
+    #
+    allTriedCoordinates = []
+
     index = 0
 
 def settingCanvas():
