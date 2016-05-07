@@ -112,7 +112,7 @@ class Canvas():
         """
 
         tiles = Tile
-
+        global lasttile
         lindex = 0
         #Zoekt de laast geplaatste tegel.
         for tile in tiles.placedCoordinates:
