@@ -41,12 +41,15 @@ class Canvas():
             if self.space[startY][startX + x] != 0:
                 return False
 
+<<<<<<< HEAD
         coortile = (tileName, startX, startY)
 
         if coortile in tiles.Coordinates:
             print "been there, done that"
             return False
 
+=======
+>>>>>>> origin/master
         #plaatst de tegel.
         for i in range(tileHeight):
             for j in range (tileWidth):
@@ -58,6 +61,7 @@ class Canvas():
 
         #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
         tiles.sortTileSet.pop(tiles.index)
+<<<<<<< HEAD
 
         #Roept functie aan om coordinaten per tegel op te slaan.
         coor = self.saveCoordinates(tileName, startX, startY)
@@ -65,6 +69,15 @@ class Canvas():
         #begint met zoeken voor een tegel voor de volgende positie.
         return True
 
+=======
+
+        #Roept functie aan om coordinaten per tegel op te slaan.
+        coor = self.saveCoordinates(tileName, startX, startY)
+
+        #begint met zoeken voor een tegel voor de volgende positie.
+        return True
+
+>>>>>>> origin/master
     def visualizeCanvas(self):
 
         for row in self.space:
@@ -213,4 +226,8 @@ def settingCanvas():
     canvas.runTileSetter()
 
 
+<<<<<<< HEAD
 settingCanvas()
+=======
+settingCanvas()
+>>>>>>> origin/master
