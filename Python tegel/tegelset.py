@@ -7,6 +7,9 @@ import sys
 sys.setrecursionlimit(11000)
 ##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
 
+global tileSet
+tileSet = tileSet3
+
 class Canvas():
     """
     The canvas represents the empty space
@@ -121,23 +124,26 @@ class Canvas():
         tiles.placedCoordinates.pop(lindex -1)
 
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
-        for i in tileSet1:
+        for i in  tileSet :
             if i[0] == lasttilepos[0]:
                 lasttile = i
+        print "lasttile", lasttile
         #afmetingen laastst geplaatste tegel.
         lasttileheight = lasttile[2]
         lasttilewidth = lasttile[1]
         #voegt tegel weer toe aan de Lijst sorttileset:
-        print "hoe vaak"
+
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
         #opnieuw sorteren?
         tiles.sortTileSet = sorted(tiles.sortTileSet, key=lambda x: x[1],  reverse=True)
         #print tiles.sortTileSet
-
+        print "hier"
+        print lasttilepos
         #tegel wordt verwijdert uit het canvas
         for i in range(lasttileheight):
             for j in range (lasttilewidth):
                 # als de tegel past wordt hij de tegel neergezet.
+####
                 self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
 
 
@@ -157,7 +163,6 @@ class Canvas():
 
         tiles = Tile
         #canvas = Canvas
-
         #Loopt door de tiles set en....
         while tiles.sortTileSet:
             tiles.index = 0
@@ -192,7 +197,7 @@ class Tile(object):
         self.tileName = tile[0]
 
 
-    sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
+    sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
     #Lijst van coordinaten per tegel.
     placedCoordinates = []
     #
@@ -202,7 +207,8 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(17,17)
+    canvas = Canvas(55,56)
+
     canvas.runTileSetter()
 
 
