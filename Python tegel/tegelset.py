@@ -3,6 +3,9 @@ from tileSets import *
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
+import sys
+sys.setrecursionlimit(11000)
+##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
 
 class Canvas():
     """
@@ -30,35 +33,53 @@ class Canvas():
         startY = start[1]
 
         # ga af of de tegel past op elke coordinaat
-        
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
-            print "past niet"
             return False
-              
+
+        #checkt of...
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
-                print "past ook niet"
                 return False
-                   
-                
+
+        coortile = (tileName, startX, startY)
+
+        if coortile in tiles.Coordinates:
+            print "been there, done that"
+            return False
+
+        #plaatst de tegel.
         for i in range(tileHeight):
-            for j in range (tileWidth):            
+            for j in range (tileWidth):
                 # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
 
+        # print canvas
+        self.visualizeCanvas()
 
+        #Verwijdert de tegel uit de lijst van opties, als de tegel gebruikt is.
+        tiles.sortTileSet.pop(tiles.index)
 
-        #verwijder de tegel uit de lijst met opties
-        #loop weer door de lijst met tegels van groot naar klein.
-        # print canvas (aparte functie worden --> visualize canvas).
+        #Roept functie aan om coordinaten per tegel op te slaan.
+        coor = self.saveCoordinates(tileName, startX, startY)
+
+        #begint met zoeken voor een tegel voor de volgende positie.
+        return True
+
+    def visualizeCanvas(self):
+
         for row in self.space:
             print row
         print '\n'
-        tiles.sortTileSet.pop(tiles.index)
-        print tiles.sortTileSet
-        return True
 
-        #updates position of tile in tile class
+
+    def saveCoordinates(self, tileName, coorX, coorY):
+        tiles = Tile
+
+        coordinate = (tileName, coorX, coorY)
+        tiles.Coordinates.append(coordinate)
+
+        return tiles.Coordinates
+
 
     def findNextPosition(self):
         """
@@ -79,8 +100,97 @@ class Canvas():
                 if self.space[i][j] == 0:
                     return (j,i)
 
-    def removeTile():
-        print "leeg"
+    def removeTile(self):
+
+        tiles = Tile
+        lastIndex = 0
+
+        #Zoekt de laast geplaatste tegel.
+        for tile in tiles.Coordinates:
+            lastIndex+=1
+            lasttilepos = tile
+
+        #verwijdert laatst gezsette tegel uit coordinaten:
+        tiles.Coordinates.pop(lastIndex-1)
+
+        #zoekt de laatste tegel op naam in tileset voor de afmetingen.
+        for i in tileSet1:
+            if i[0] == lasttilepos[0]:
+                lasttile = i
+        #afmetingen laastst geplaatste tegel.
+        lasttileheight = lasttile[2]
+        lasttilewidth = lasttile[1]
+        #voegt tegel weer toe aan de Lijst sorttileset:
+        tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
+        #opnieuw sorteren?
+        tiles.sortTileSet = sorted(tiles.sortTileSet, key=lambda x: x[1],  reverse=True)
+        print tiles.sortTileSet
+
+        #tegel wordt verwijdert uit het canvas
+        for i in range(lasttileheight):
+            for j in range (lasttilewidth):
+                # als de tegel past wordt hij de tegel neergezet.
+                self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
+
+        # print canvas
+        self.visualizeCanvas()
+
+        self.newTile(lasttilewidth)
+        #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
+        #return True
+
+    def newTile(self, lasttilewidth):
+        tiles = Tile
+        canvas = Canvas
+        index = 0
+        #print "test"
+        #print lasttilewidth
+
+        for tile in tiles.sortTileSet:
+            t = Tile(tile)
+
+            if t.tileWidth != lasttilewidth:
+
+                if canvas.placeTile(self, t.tileName, t.tileHeight, t.tileWidth):
+                    self.runTileSetter()
+
+                    return True
+
+            index += 1
+
+            if index == len(tiles.sortTileSet):
+                #print "hier2"
+                self.removeTile()
+                return False
+
+    def runTileSetter(self):
+
+        tiles = Tile
+        #canvas = Canvas
+
+        #Loopt door de tiles set en....
+        while tiles.sortTileSet:
+            tiles.index = 0
+            i = 0
+
+            for tile in tiles.sortTileSet:
+                #print tile
+                #geeft elke tile eigenschappen
+                t = Tile(tile)
+                # zet tegel in canvas
+                if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
+                    break
+                tiles.index += 1
+
+                # als alle opties voor een positie niet kunnen dan stopt hij.
+                if tiles.index == len(tiles.sortTileSet):
+                    #print tiles.Coordinates
+
+                    #remove laats gezette tegel??
+                    self.removeTile()
+                    return False
+
+
 
 class Tile(object):
     """
@@ -93,31 +203,14 @@ class Tile(object):
 
 
     sortTileSet = sorted(tileSet1, key=lambda x: x[1],  reverse=True)
-
+    #Lijst van coordinaten per tegel.
+    Coordinates = []
     index = 0
 
-    #begin positie van de tegel in Canvas.
-    YPosition = []
-    XPosition = []
-
-def runTileSetter():
-
-    tiles = Tile
-
-    #print tiles.sortTileSet
+def settingCanvas():
 
     canvas = Canvas(17,17)
-    #Loopt door de tileset.
+    canvas.runTileSetter()
 
-    while tiles.sortTileSet:
-        tiles.index = 0
-        for tile in tiles.sortTileSet:
-            print tile
-            #geeft elke tile eigenschappen
-            t = Tile(tile)
-            # zet tegel in canvas
-            if canvas.placeTile(t.tileName, t.tileHeight, t.tileWidth):
-                break
-            tiles.index += 1
 
-runTileSetter()
+settingCanvas()
