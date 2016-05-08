@@ -213,3 +213,33 @@ def settingCanvas():
 
 
 settingCanvas()
+'''
+def runSimulation(speed, width, height, tiles), num_trials:
+    """
+    Runs NUM_TRIALS trials of the simulation and returns the mean number of
+    time-steps needed to clean the fraction MIN_COVERAGE of the room.
+
+    speed: a float (speed > 0)
+    width: an int (width > 0)
+    height: an int (height > 0)
+
+    num_trials: an int (num_trials > 0)
+
+    """
+    anim = visualisationTegelzetten(tileSet, width, height)
+    num = num_trials
+    totaltime = 0
+
+    while num > 0:
+        room = RectangularRoom(width, height)
+        coor = []
+        anim.update(room, coor)
+        while tileSet niet leeg is
+            for tile in tiles:
+                Canvas.placeTile
+                anim.update(room, coor)
+            totaltime += 1
+        anim.update(room, coor)
+    return float(totaltime/num_trials)
+
+    anim.done()
