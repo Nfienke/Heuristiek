@@ -18,7 +18,7 @@ C = Tkinter.Canvas(top, height=17*30, width=17*30)
 X0list = []
 Y1list = []
 index = 0
-colors = ["red", "orange", "yellow", "green", "blue", "violet"]
+
 
 for tile in placedCoordinates:
 
@@ -34,7 +34,6 @@ for tile in placedCoordinates:
 
         if tileName == tile2[0]:
 
-            print index
             if index > 1:
                 Y0 = Y1list[index-1] + tile2[2]*30
                 X1 = X0list[index-1] + tile2[1]*30
@@ -42,11 +41,11 @@ for tile in placedCoordinates:
             else:
                 Y0 = tile2[2]*30
                 X1 = tile2[1]*30
+
             coor = X0, Y0, X1, Y1
-            print coor
-            tileName = C.create_rectangle(coor, fill= random.choice(colors), width=2)
 
-
+            #http://stackoverflow.com/questions/22950997/random-fill-colour-for-shapes-in-pythontkinter
+            tileName = C.create_rectangle(coor, fill= "#"+("%06x"%random.randint(0,16777215)), width=2)
 
 C.pack()
 top.mainloop()
