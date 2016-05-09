@@ -8,7 +8,7 @@ sys.setrecursionlimit(14900)
 # ##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
 
 global tileSet
-tileSet = tileSet2
+tileSet = tileSet1
 
 class Canvas():
     """
@@ -49,7 +49,7 @@ class Canvas():
         #     return False
 
         neighbour2 = []
-        for tile in tiles.placedCoordinates:
+        for tile in placedCoordinates:
 
             neighbour2.append(tile[0])
 
@@ -93,21 +93,21 @@ class Canvas():
 
         coordinate = (tileName, coorX, coorY)
         #coordinateWidth = (tileName, coorX, coorY)
-        tiles.placedCoordinates.append(coordinate)
+        placedCoordinates.append(coordinate)
         #tiles.allTriedCoordinates.append(coordinateWidth)
 
 
         neighbour = []
-        neighbourindex = len(tiles.placedCoordinates)
+        neighbourindex = len(placedCoordinates)
         if neighbourindex > 0:
-            for tile in tiles.placedCoordinates:
+            for tile in placedCoordinates:
 
                 neighbour.append(tile[0])
 
 
             tiles.neighbourList.append(neighbour)
 
-        return tiles.placedCoordinates, tiles.neighbourList #, tiles.allTriedCoordinates
+        return placedCoordinates, tiles.neighbourList #, tiles.allTriedCoordinates
 
 
     def findNextPosition(self):
@@ -140,17 +140,17 @@ class Canvas():
         lindex = 0
 
         #Zoekt de laast geplaatste tegel.
-        for tile in tiles.placedCoordinates:
+        for tile in placedCoordinates:
             lindex += 1
             lasttilepos = tile
 
         if lasttilepos[1] == 0 and lasttilepos[2] == 0:
             print "niet eerste weghalen"
             print "laatst geplaatste tegel", lasttilepos
-            print "tiles.placedCoordinates:", tiles.placedCoordinates
+            print "tiles.placedCoordinates:", placedCoordinates
             quit()
 
-        tiles.placedCoordinates.pop(lindex -1)
+        placedCoordinates.pop(lindex -1)
 
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
         for i in  tileSet :
@@ -211,6 +211,7 @@ class Canvas():
                     self.removeTile()
 
                     return False
+        print placedCoordinates
         self.visualizeCanvas()
 
 
@@ -227,6 +228,7 @@ class Tile(object):
 
     sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
     #Lijst van coordinaten per tegel.
+    global placedCoordinates
     placedCoordinates = []
     #
     allTriedCoordinates = []
@@ -237,7 +239,7 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(23,27)
+    canvas = Canvas(17,17)
 
     canvas.runTileSetter()
 
