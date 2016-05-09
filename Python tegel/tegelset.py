@@ -4,11 +4,11 @@ Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
 import sys
-sys.setrecursionlimit(11000)
-##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
+sys.setrecursionlimit(14900)
+# ##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
 
 global tileSet
-tileSet = tileSet3
+tileSet = tileSet2
 
 class Canvas():
     """
@@ -34,7 +34,6 @@ class Canvas():
         # geef x en y coordinaat om tegel neer te zetten
         startX = start[0]
         startY = start[1]
-        print tiles.sortTileSet
 
         # kijkt of de tegel wel binnen het canvas past.
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
@@ -45,11 +44,18 @@ class Canvas():
             if self.space[startY][startX + x] != 0:
                 return False
 
-        coortile = (tileName, startX, startY)
-        #print coortile
-        #print"hello"
-        if coortile in tiles.allTriedCoordinates:
-            #print "been there, done that"
+        #coortile = (tileName, startX, startY)
+        # if coortile in tiles.allTriedCoordinates:
+        #     return False
+
+        neighbour2 = []
+        for tile in tiles.placedCoordinates:
+
+            neighbour2.append(tile[0])
+
+        neighbour2.append(tileName)
+
+        if neighbour2 in tiles.neighbourList:
             return False
 
         #plaatst de tegel indien het niet false is.
@@ -62,7 +68,7 @@ class Canvas():
         tiles.sortTileSet.pop(tiles.index)
 
         # print canvas
-        self.visualizeCanvas()
+        #self.visualizeCanvas()
 
 
 
@@ -73,20 +79,35 @@ class Canvas():
         return True
 
     def visualizeCanvas(self):
+        tiles = Tile
+        # sort = sorted(tiles.allTriedCoordinates, key=lambda x: x[0],  reverse=False)
+        # print "all", sort
 
         for row in self.space:
             print row
         print '\n'
-
+        #print tiles.neighbourList
 
     def saveCoordinates(self, tileName, coorX, coorY):
         tiles = Tile
 
         coordinate = (tileName, coorX, coorY)
+        #coordinateWidth = (tileName, coorX, coorY)
         tiles.placedCoordinates.append(coordinate)
-        tiles.allTriedCoordinates.append(coordinate)
+        #tiles.allTriedCoordinates.append(coordinateWidth)
 
-        return tiles.placedCoordinates, tiles.allTriedCoordinates
+
+        neighbour = []
+        neighbourindex = len(tiles.placedCoordinates)
+        if neighbourindex > 0:
+            for tile in tiles.placedCoordinates:
+
+                neighbour.append(tile[0])
+
+
+            tiles.neighbourList.append(neighbour)
+
+        return tiles.placedCoordinates, tiles.neighbourList #, tiles.allTriedCoordinates
 
 
     def findNextPosition(self):
@@ -117,38 +138,42 @@ class Canvas():
         tiles = Tile
         global lasttile
         lindex = 0
+
         #Zoekt de laast geplaatste tegel.
         for tile in tiles.placedCoordinates:
             lindex += 1
             lasttilepos = tile
+
+        if lasttilepos[1] == 0 and lasttilepos[2] == 0:
+            print "niet eerste weghalen"
+            print "laatst geplaatste tegel", lasttilepos
+            print "tiles.placedCoordinates:", tiles.placedCoordinates
+            quit()
+
         tiles.placedCoordinates.pop(lindex -1)
 
         #zoekt de laatste tegel op naam in tileset voor de afmetingen.
         for i in  tileSet :
             if i[0] == lasttilepos[0]:
                 lasttile = i
-        print "lasttile", lasttile
+        #print "lasttile", lasttile
         #afmetingen laastst geplaatste tegel.
         lasttileheight = lasttile[2]
         lasttilewidth = lasttile[1]
         #voegt tegel weer toe aan de Lijst sorttileset:
 
         tiles.sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
-        #opnieuw sorteren?
+        #opnieuw sorteren
         tiles.sortTileSet = sorted(tiles.sortTileSet, key=lambda x: x[1],  reverse=True)
-        #print tiles.sortTileSet
-        print "hier"
-        print lasttilepos
+
+
         #tegel wordt verwijdert uit het canvas
         for i in range(lasttileheight):
             for j in range (lasttilewidth):
-                # als de tegel past wordt hij de tegel neergezet.
-####
                 self.space[lasttilepos[2] + i][lasttilepos[1] + j] = 0
 
-
         # print canvas
-        self.visualizeCanvas()
+        #self.visualizeCanvas()
 
         #self.newTile(lasttilewidth)
         #dan mag je weer proberen maar niet die tegel zeg maar of met dezelfd afmetingen ...
@@ -177,13 +202,16 @@ class Canvas():
                     break
                 tiles.index += 1
 
+
                 # als alle opties voor een positie niet kunnen dan stopt hij.
                 if tiles.index == len(tiles.sortTileSet):
                     #print tiles.Coordinates
 
                     #remove laats gezette tegel??
                     self.removeTile()
+
                     return False
+        self.visualizeCanvas()
 
 
 
@@ -202,44 +230,46 @@ class Tile(object):
     placedCoordinates = []
     #
     allTriedCoordinates = []
+    #
+    neighbourList = []
 
     index = 0
 
 def settingCanvas():
 
-    canvas = Canvas(55,56)
+    canvas = Canvas(23,27)
 
     canvas.runTileSetter()
 
 
 settingCanvas()
-'''
-def runSimulation(speed, width, height, tiles), num_trials:
-    """
-    Runs NUM_TRIALS trials of the simulation and returns the mean number of
-    time-steps needed to clean the fraction MIN_COVERAGE of the room.
-
-    speed: a float (speed > 0)
-    width: an int (width > 0)
-    height: an int (height > 0)
-
-    num_trials: an int (num_trials > 0)
-
-    """
-    anim = visualisationTegelzetten(tileSet, width, height)
-    num = num_trials
-    totaltime = 0
-
-    while num > 0:
-        room = RectangularRoom(width, height)
-        coor = []
-        anim.update(room, coor)
-        while tileSet niet leeg is
-            for tile in tiles:
-                Canvas.placeTile
-                anim.update(room, coor)
-            totaltime += 1
-        anim.update(room, coor)
-    return float(totaltime/num_trials)
-
-    anim.done()
+    #
+    # def runSimulation(speed, width, height, tiles), num_trials:
+    #     """
+    #     Runs NUM_TRIALS trials of the simulation and returns the mean number of
+    #     time-steps needed to clean the fraction MIN_COVERAGE of the room.
+    #
+    #     speed: a float (speed > 0)
+    #     width: an int (width > 0)
+    #     height: an int (height > 0)
+    #
+    #     num_trials: an int (num_trials > 0)
+    #
+    #     """
+    #     anim = visualisationTegelzetten(tileSet, width, height)
+    #     num = num_trials
+    #     totaltime = 0
+    #
+    #     while num > 0:
+    #         room = RectangularRoom(width, height)
+    #         coor = []
+    #         anim.update(room, coor)
+    #         while tileSet niet leeg is
+    #             for tile in tiles:
+    #                 Canvas.placeTile
+    #                 anim.update(room, coor)
+    #             totaltime += 1
+    #         anim.update(room, coor)
+    #     return float(totaltime/num_trials)
+    #
+    #     anim.done()
