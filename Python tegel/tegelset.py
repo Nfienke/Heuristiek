@@ -4,11 +4,11 @@ Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
 import sys
-sys.setrecursionlimit(14900)
+sys.setrecursionlimit(12000)
 # ##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
 
 global tileSet
-tileSet = tileSet1
+tileSet = tileSet2
 
 class Canvas():
     """
@@ -48,15 +48,15 @@ class Canvas():
         # if coortile in tiles.allTriedCoordinates:
         #     return False
 
-        neighbour2 = []
+        neighbour2 = ""
         for tile in placedCoordinates:
 
             neighbour2.append(tile[0])
 
         neighbour2.append(tileName)
-
-        if neighbour2 in tiles.neighbourList:
-            return False
+        #
+        # if neighbour2 in tiles.neighbourList:
+        #     return False
 
         #plaatst de tegel indien het niet false is.
         for i in range(tileHeight):
@@ -97,17 +97,17 @@ class Canvas():
         #tiles.allTriedCoordinates.append(coordinateWidth)
 
 
-        neighbour = []
+        neighbour = ""
         neighbourindex = len(placedCoordinates)
         if neighbourindex > 0:
             for tile in placedCoordinates:
 
-                neighbour.append(tile[0])
+                neighbour += tile[0]
 
 
-            tiles.neighbourList.append(neighbour)
+            tiles.neighbourdict += neighbour
 
-        return placedCoordinates, tiles.neighbourList #, tiles.allTriedCoordinates
+        return placedCoordinates, tiles.neighbourdict #, tiles.allTriedCoordinates
 
 
     def findNextPosition(self):
@@ -234,12 +234,14 @@ class Tile(object):
     allTriedCoordinates = []
     #
     neighbourList = []
+    #
+    neighbourdict = {}
 
     index = 0
 
 def settingCanvas():
 
-    canvas = Canvas(17,17)
+    canvas = Canvas(23,27)
 
     canvas.runTileSetter()
 
@@ -275,3 +277,16 @@ settingCanvas()
     #     return float(totaltime/num_trials)
     #
     #     anim.done()
+
+
+######todo
+    #dict.has_key()
+    #random iteraties....
+    #van buiten naar binnen werken(heel lastig.)
+    #numpy array...
+    #list comprohension
+    #array[x1:x2, y1:y1] = iets, voor het plaatsen
+    #passen op breedte dan numpy ....checken of er iets in een array/list staat.
+    #find next position, je begint bij het begin met checken en dat is niet efficient. of met numpy...
+    #sort tile set moet netter, liever na removen en appenden meteen op de goede plek zetten.
+    #tegelverwijderen ook met advanced indexing
