@@ -278,6 +278,7 @@ settingCanvas()
     #     return float(totaltime/num_trials)
     #
     #     anim.done()
+<<<<<<< Updated upstream
 
 
 ######todo
@@ -327,3 +328,9 @@ settingCanvas()
 # '''
 # # >>>>>>> Stashed changes
 # # >>>>>>> origin/master
+=======
+=======
+
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
