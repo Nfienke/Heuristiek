@@ -42,7 +42,7 @@ for tile in placedCoordinates:
             coor = X0, Y0, X1, Y1
 
             """
-            stackoverflow,(2014).Random fill colour for shapes in Python(TKinter). Verkregen op 9, mei, 2016 van http://stackoverflow.com/questions/22950997/random-fill-colour-for-shapes-in-pythontkinter
+            Stackoverflow,(2014).Random fill colour for shapes in Python(TKinter). Verkregen op 9, mei, 2016 van http://stackoverflow.com/questions/22950997/random-fill-colour-for-shapes-in-pythontkinter
             """
             #tekent elke tegel in het canvas met een random color.
             tileName = C.create_rectangle(coor, fill= "#"+("%06x"%random.randint(0,16777215)), width=2)
