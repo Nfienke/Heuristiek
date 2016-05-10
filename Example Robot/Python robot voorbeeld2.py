@@ -17,7 +17,6 @@ class RobotVisualization:
         self.max_dim = max(width, height)
         self.width = width
         self.height = height
-        self.num_robots = num_robots
 
         # Initialize a drawing surface
         self.master = Tk()

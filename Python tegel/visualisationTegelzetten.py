@@ -1,5 +1,5 @@
 
-# # Visualisatie code voor tegelzetten. Op basis visualisatie code van problem
+# Visualisatie code voor tegelzetten. Op basis visualisatie code van problem
 # set 6 in Programmeren 2
 #
 # See the problem set for instructions on how to use this code.
