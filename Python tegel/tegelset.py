@@ -247,6 +247,7 @@ def settingCanvas():
 
 
 settingCanvas()
+<<<<<<< Updated upstream
     #
     # def runSimulation(speed, width, height, tiles), num_trials:
     #     """
@@ -277,6 +278,7 @@ settingCanvas()
     #     return float(totaltime/num_trials)
     #
     #     anim.done()
+<<<<<<< HEAD
 
 
 ######todo
@@ -290,3 +292,39 @@ settingCanvas()
     #find next position, je begint bij het begin met checken en dat is niet efficient. of met numpy...
     #sort tile set moet netter, liever na removen en appenden meteen op de goede plek zetten.
     #tegelverwijderen ook met advanced indexing
+=======
+=======
+'''
+def runSimulation(speed, width, height, tileSet, num_trials):
+    """
+    Runs NUM_TRIALS trials of the simulation and returns the mean number of
+    time-steps needed to clean the fraction MIN_COVERAGE of the room.
+
+    speed: a float (speed > 0)
+    width: an int (width > 0)
+    height: an int (height > 0)
+
+    num_trials: an int (num_trials > 0)
+    """
+    anim = visualisationTegelzetten(tileSet, width, height)
+    num = num_trials
+    totaltime = 0
+
+    while num > 0:
+        room = Canvas(width, height)
+        coor = []
+        anim.update(room, coor)
+        while tiles.sortTileSet:
+            for tile in tiles:
+                Canvas.placeTile
+                anim.update(room, coor)
+            totaltime += 1
+        anim.update(room, coor)
+    return float(totaltime/num_trials)
+
+    anim.done()
+
+avg = runSimulation(1.0, 17, 17, tileSet1, 30)
+'''
+>>>>>>> Stashed changes
+>>>>>>> origin/master
