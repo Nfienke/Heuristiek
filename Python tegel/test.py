@@ -1,16 +1,19 @@
-import struct
-print struct.calcsize("P")*8
+def fact(x,y):
 
-import itertools
+  i = 0
+  for i in range(x-1,y+1):
 
-arr = [[1,2,3,4],
-       [12,13,14,5],
-       [11,16,15,6],
-       [10,9,8,7]]
+      i += 1
+      print"test", i
 
-def transpose_and_yield_top(arr):
-    while arr:
-        yield arr[0]
-        arr = list(reversed(zip(*arr[1:])))
 
-print list(itertools.chain(*transpose_and_yield_top(arr)))
+      if i == 7:
+          if i == 6:
+             print i
+             quit()
+          else:
+             fact(1,9)
+
+
+
+print fact(1,6)
