@@ -106,6 +106,7 @@ class Canvas():
 
 
             tiles.neighbourdict[neighbour] = True
+            print tiles.neighbourdict
 
         return placedCoordinates, tiles.neighbourdict #, tiles.allTriedCoordinates
 
