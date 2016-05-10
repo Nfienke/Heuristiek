@@ -9,7 +9,7 @@ import time
 
 from Tkinter import *
 
-class RobotVisualization:
+class TileVisualization:
     def __init__(self, width, height, delay = 0.2):
         "Initializes a visualization with the specified parameters."
         # Number of seconds to pause after each frame
@@ -22,7 +22,7 @@ class RobotVisualization:
 
         # Initialize a drawing surface
         self.master = Tk()
-        self.w = Canvas(self.master, width=55, height=56)
+        self.w = Canvas(self.master, width=17, height=17)
         self.w.pack()
         self.master.update()
 
@@ -48,68 +48,25 @@ class RobotVisualization:
         self.time = 0
         self.master.update()
 
-    def _status_string(self, time, num_clean_tiles):
-        "Returns an appropriate status string to print."
-        percent_clean = 100 * num_clean_tiles / (self.width * self.height)
-        return "Time: %04d; %d tiles (%d%%) cleaned" % \
-            (time, num_clean_tiles, percent_clean)
-
     def _map_coords(self, x, y):
         "Maps grid positions to window positions (in pixels)."
         return (250 + 450 * ((x - self.width / 2.0) / self.max_dim),
                 250 + 450 * ((self.height / 2.0 - y) / self.max_dim))
 
-    def _draw_tiles(self, tile):
-        "Returns a square or rectangle representing a tile with the specified parameters."
-
-    def __init__(self, tile):
-
-        self.tileHeight = tile[2]
-        self.tileWidth = tile[1]
-        self.tileName = tile[0]
-
-
-
-
-        x, y = position.getX(), position.getY()
-        d1 = direction + 165
-        d2 = direction - 165
-        x1, y1 = self._map_coords(x, y)
-        x2, y2 = self._map_coords(x + 0.6 * math.sin(math.radians(d1)),
-                                  y + 0.6 * math.cos(math.radians(d1)))
-        x3, y3 = self._map_coords(x + 0.6 * math.sin(math.radians(d2)),
-                                  y + 0.6 * math.cos(math.radians(d2)))
-        return self.w.create_polygon([x1, y1, x2, y2, x3, y3], fill="red")
-
-    def update(self, room, robots):
-        "Redraws the visualization with the specified room and robot state."
-        # Removes a gray square for any tiles have been cleaned.
+    def update(self, Canvas, tileName):
+        "Redraws the visualization with the Canvas state and placed tiles"
+        # Removes a gray square for any tiles that have been placed
         for i in range(self.width):
             for j in range(self.height):
-                if room.isTileCleaned(i, j):
+                if Canvas.tileName(i, j):
                     self.w.delete(self.tiles[(i, j)])
-        # Delete all existing robots.
-        if self.robots:
-            for robot in self.robots:
-                self.w.delete(robot)
-                self.master.update_idletasks()
-        # Draw new robots
-        self.robots = []
-        for robot in robots:
-            pos = robot.getRobotPosition()
-            x, y = pos.getX(), pos.getY()
-            x1, y1 = self._map_coords(x - 0.08, y - 0.08)
-            x2, y2 = self._map_coords(x + 0.08, y + 0.08)
-            self.robots.append(self.w.create_oval(x1, y1, x2, y2,
-                                                  fill = "black"))
-            self.robots.append(
-                self._draw_robot(robot.getRobotPosition(), robot.getRobotDirection()))
+
         # Update text
         self.w.delete(self.text)
         self.time += 1
         self.text = self.w.create_text(
             25, 0, anchor=NW,
-            text=self._status_string(self.time, room.getNumCleanedTiles()))
+            text=self._status_string(self.time, room.saveCoordinatess()))
         self.master.update()
         time.sleep(self.delay)
 
