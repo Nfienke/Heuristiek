@@ -1,19 +1,9 @@
-def fact(x,y):
+from itertools import permutations
+from itertools import *
 
-  i = 0
-  for i in range(x-1,y+1):
+test = [1,2,3]
 
-      i += 1
-      print"test", i
+for i in test:
 
-
-      if i == 7:
-          if i == 6:
-             print i
-             quit()
-          else:
-             fact(1,9)
-
-
-
-print fact(1,6)
+    #i = list(i)
+    print i
