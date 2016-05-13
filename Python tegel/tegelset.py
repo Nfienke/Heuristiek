@@ -113,9 +113,12 @@ class Canvas():
         i = 0
 
         while sortTileSet:
-            i += 1
+
             tile = sortTileSet[i]
+            i += 1
             t = Tile(tile)
+
+
             options = sortTileSet[1:]
             value = (tile, options)
             stack.append(value)
@@ -144,14 +147,15 @@ class Canvas():
 
 
                 stack.pop()
-                print stack
+                #print tile
+                #print stack
                 #stack.remove(tile)
-                print stack
-                print i
-                stack.pop([i][1][0])
+                #print stack
+                #print i
+                print stack[i][1].pop(0)#[1]#[0]
                 print stack
                 quit()
-                print "end"
+
 
         #
         # for tile in tileSet1:
