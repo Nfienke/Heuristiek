@@ -116,6 +116,8 @@ class Canvas():
         #print tiles.neighbourList
 
 
+
+
     def runTileSetter(self):
 
         self.space = [[0 for count in range(17)] for count in range(17)]
@@ -132,10 +134,12 @@ class Canvas():
 
                 #if there are no options left
                 if len(stack[iStack][1]) < 1:
+                    print"no left"
                     tile = stack[iStack][0]
-
+                    print tile
                     #removes tile with no options left
                     stack.pop()
+                    print stack
 
                     #adds tile to the sorttileset again
                     if tile not in sortTileSet:
@@ -145,6 +149,35 @@ class Canvas():
 
                     #removes tile from the options left from his neighbour.
                     stack[iStack-1][1].pop(0)
+                    #rint stack[iStack-1][1]
+
+
+                    iStack = iStack - 1
+
+                    #if neighbour is also  out of options.
+                    if len(stack[iStack][1]) < 1:
+                        print stack
+                        tile = stack[iStack][0]
+                        print tile
+                        #removes tile with no options left
+                        stack.pop()
+                        print stack
+
+                        #adds tile to the sorttileset again
+                        if tile not in sortTileSet:
+
+                            sortTileSet.append(tile)
+                            sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+
+                        #removes tile from the options left from his neighbour.
+                        stack[iStack-1][1].pop(0)
+                        #rint stack[iStack-1][1]
+
+
+                        iStack = len(stack)
+                        tile = stack[iStack-1][1][0]
+                        print stack
+                        
 
                 else:
 
@@ -155,6 +188,8 @@ class Canvas():
 
                 tile = sortTileSet[0]
 
+            print tile
+
             #gets attributes from a tile.
             t = Tile(tile)
 
@@ -164,6 +199,8 @@ class Canvas():
             value = (tile, options)
             stack.append(value)
 
+            print stack
+
             #checks if a tile fits.
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
 
@@ -172,8 +209,10 @@ class Canvas():
 
 
             else:
+                print "false"
                 #removes last tile from stack
                 stack.pop()
+                print "test"
 
                 #adds tile to the sorttileset again
                 if tile not in sortTileSet:
@@ -182,9 +221,12 @@ class Canvas():
                     sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
 
                 #removes tile from the options left from his neighbour.
-                print stack[iStack][1]
-                print "g"
+                # print stack[iStack][1][0]
+                print "hey"
+
                 stack[iStack][1].pop(0)
+
+                print stack
 
 
 

@@ -1,4 +1,4 @@
-from tilesets import *
+from tileSets import *
 """
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
@@ -13,7 +13,7 @@ tileSet = tileSet1
 global placedCoordinates
 placedCoordinates = []
 
-global neighbourdict 
+global neighbourdict
 neighbourdict = {}
 
 
@@ -38,7 +38,7 @@ class Canvas():
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
-        
+
         # zoek de volgende positie van de tegel
         start = self.findNextPosition()
 
@@ -99,7 +99,7 @@ class Canvas():
         #print tiles.neighbourList
 
     def saveCoordinates(self, tileName, coorX, coorY):
-        
+
 
         coordinate = (tileName, coorX, coorY)
         #coordinateWidth = (tileName, coorX, coorY)
@@ -171,7 +171,7 @@ class Canvas():
         lasttileheight = lasttile[2]
         lasttilewidth = lasttile[1]
         #voegt tegel weer toe aan de Lijst sorttileset:
-        
+
         global sortTileSet
 
         sortTileSet.append((lasttilepos[0], lasttilewidth, lasttileheight))
@@ -248,5 +248,3 @@ def settingCanvas():
 
 
 settingCanvas()
-
-    
