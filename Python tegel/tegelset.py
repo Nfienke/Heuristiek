@@ -114,29 +114,38 @@ class Canvas():
 
         while sortTileSet:
 
+            print "stack", stack
+            print "tileset", sortTileSet
+            print i
             tile = sortTileSet[i]
-            i += 1
-            t = Tile(tile)
+            print tile
 
+            t = Tile(tile)
 
             options = sortTileSet[1:]
             value = (tile, options)
             stack.append(value)
 
 
-            #print visited
+            #print "lengte",len(stack)
+            iStack = len(stack)-1
 
-            #vis = stack[:]
+            if len(stack) > 1:
+                #print "hello"
+                #print "i", i
+                #print "stak", tile, stack[iStack-1][1]
+                if tile not in stack[iStack-1][1]:
+                    stack.pop()
+                    #print "not in?"
 
-            # if  in visited:
-            #     stack.pop()
-            #     i += 1
-            #
-            #     #volgende proberen
-            #     continue
+                    i += 1
+
+                    #volgende proberen
+                    continue
 
 
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
+
                 #print tile, sortTileSet
                 sortTileSet.remove(tile)
                 #sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
@@ -145,16 +154,16 @@ class Canvas():
 
             else:
 
-
                 stack.pop()
-                #print tile
+                #print"jo"
+                #print iStack
                 #print stack
-                #stack.remove(tile)
+                #print stack[iStack-1][1][0]
+                stack[iStack-1][1].pop(0)
+                #print"end"
                 #print stack
-                #print i
-                print stack[i][1].pop(0)#[1]#[0]
-                print stack
-                quit()
+
+                #quit()
 
 
         #
