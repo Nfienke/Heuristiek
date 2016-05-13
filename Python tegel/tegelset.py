@@ -21,10 +21,6 @@ global neighbourdict
 neighbourdict = {}
 
 
-sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
-
-
-
 class Canvas():
     """
     The canvas represents the empty space
@@ -115,8 +111,60 @@ class Canvas():
         print '\n'
         #print tiles.neighbourList
 
+    def stepBack(self,stack, iStack, sortTileSet):
+        #print"ja"
+        tile = stack[iStack][0]
+
+        #lege optie uit stack halen
+        stack.pop()
 
 
+        #als hele stack leeg is
+        if iStack < 1:
+            print "not found", stack, sortTileSet
+            quit()
+
+        #removes tile from the options left from his neighbour.
+        stack[iStack-1][1].remove(tile)
+
+        iStack = iStack-1
+
+        t = Tile(tile)
+
+        #bepalen coordinate laatst geplaatste tegel.
+        iCoor = len(placedCoordinates)-1
+        lastTile =  placedCoordinates[iCoor]
+        placedCoordinates.remove(tile)
+        print lastTile
+        #tegel wordt verwijdert uit het canvas
+        for i in range(t.tileHeight):
+            for j in range (t.tileWidth):
+                self.space[lastTile[2] + i][lastTile[1] + j] = 0
+        self.visualizeCanvas()
+
+        self.nextStep(stack, iStack, sortTileSet)
+
+    def nextStep(self, stack, iStack, sortTileSet):
+        #print "ja2"
+        #if there are no options left
+        if len(stack[iStack][1]) < 1:
+
+            tile = stack[iStack][0]
+            #print "tegel is3:", tile
+            #print "test2", tile
+            #adds tile to the sorttileset again
+            if tile not in sortTileSet:
+                #print "append1", tile
+                sortTileSet.append(tile)
+                sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+                #print sortTileSet
+
+
+            self.stepBack(stack, iStack, sortTileSet)
+
+        else:
+
+            return stack, iStack, sortTileSet
 
     def runTileSetter(self):
 
@@ -124,6 +172,8 @@ class Canvas():
         stack = []
         i = 0
         iStack = 0
+        sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
+
 
         while sortTileSet:
             #index for the stack
@@ -131,102 +181,60 @@ class Canvas():
 
             #search for a tile from the options of his neighbour,
             if len(stack) > 0:
+                self.nextStep(stack, iStack, sortTileSet)
+                #print"testing", len(stack), iStack
+                iStack = len(stack)-1
+                tile = stack[iStack][1][0]
+                #sprint "tegel is2:", tile, stack
+                #print "test", tile
 
-                #if there are no options left
-                if len(stack[iStack][1]) < 1:
-                    print"no left"
-                    tile = stack[iStack][0]
-                    print tile
-                    #removes tile with no options left
-                    stack.pop()
-                    print stack
-
-                    #adds tile to the sorttileset again
-                    if tile not in sortTileSet:
-
-                        sortTileSet.append(tile)
-                        sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
-
-                    #removes tile from the options left from his neighbour.
-                    stack[iStack-1][1].pop(0)
-                    #rint stack[iStack-1][1]
-
-
-                    iStack = iStack - 1
-
-                    #if neighbour is also  out of options.
-                    if len(stack[iStack][1]) < 1:
-                        print stack
-                        tile = stack[iStack][0]
-                        print tile
-                        #removes tile with no options left
-                        stack.pop()
-                        print stack
-
-                        #adds tile to the sorttileset again
-                        if tile not in sortTileSet:
-
-                            sortTileSet.append(tile)
-                            sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
-
-                        #removes tile from the options left from his neighbour.
-                        stack[iStack-1][1].pop(0)
-                        #rint stack[iStack-1][1]
-
-
-                        iStack = len(stack)
-                        tile = stack[iStack-1][1][0]
-                        print stack
-                        
-
-                else:
-
-                    tile = stack[iStack][1][0]
 
             #if the tile doesn't have a neighbour, then take the first from the sorttileset.
             else:
-
+                print "oeps"
                 tile = sortTileSet[0]
 
-            print tile
 
             #gets attributes from a tile.
             t = Tile(tile)
+            #print tile
+            #print "tegel is:", tile
 
             #adds tile with options to the stack.
             options = sortTileSet[:]
+            options = sorted(options , key=lambda x: x[1],  reverse=True)
+            print options, tile
+            self.visualizeCanvas()
             options.remove(tile)
+
+
             value = (tile, options)
             stack.append(value)
 
-            print stack
+            #print stack
 
+            #print"1b", stack
             #checks if a tile fits.
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
-
+                #print "remove", tile
                 #if a tile fits, then remove tile from the sortTileSet.
                 sortTileSet.remove(tile)
+                #print sortTileSet
 
-
+            #if a tile doesnt fit
             else:
-                print "false"
+
                 #removes last tile from stack
                 stack.pop()
-                print "test"
-
-                #adds tile to the sorttileset again
-                if tile not in sortTileSet:
-
-                    sortTileSet.append(tile)
-                    sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
 
                 #removes tile from the options left from his neighbour.
-                # print stack[iStack][1][0]
-                print "hey"
 
-                stack[iStack][1].pop(0)
+                #print len(stack)
+                iStack = len(stack)-1
+                #print stack[iStack][1]
+                stack[iStack][1].remove(tile)
+                #print "2", stack
 
-                print stack
 
 
 
@@ -244,8 +252,6 @@ def settingCanvas():
 
     canvas = Canvas(17,17)
     #print sortTileSet
-
-    forbidden = []
 
     canvas.runTileSetter()
 
