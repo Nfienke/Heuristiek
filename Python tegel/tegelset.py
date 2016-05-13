@@ -134,13 +134,19 @@ class Canvas():
         #bepalen coordinate laatst geplaatste tegel.
         iCoor = len(placedCoordinates)-1
         lastTile =  placedCoordinates[iCoor]
-        placedCoordinates.remove(tile)
+        placedCoordinates.remove(lastTile)
         print lastTile
         #tegel wordt verwijdert uit het canvas
         for i in range(t.tileHeight):
             for j in range (t.tileWidth):
                 self.space[lastTile[2] + i][lastTile[1] + j] = 0
         self.visualizeCanvas()
+
+        if lastTile not in sortTileSet:
+            #print "append1", tile
+            sortTileSet.append(tile)
+            sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+            #print sortTileSet
 
         self.nextStep(stack, iStack, sortTileSet)
 
@@ -203,7 +209,7 @@ class Canvas():
             #adds tile with options to the stack.
             options = sortTileSet[:]
             options = sorted(options , key=lambda x: x[1],  reverse=True)
-            print options, tile
+            print options, tile, sortTileSet
             self.visualizeCanvas()
             options.remove(tile)
 
