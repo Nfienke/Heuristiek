@@ -13,7 +13,7 @@ top = Tkinter.Tk()
 #vergrotingsfactor
 f = 30
 #grootte van canvas keer de vergrotingsfactor.
-C = Tkinter.Canvas(top, height=17*f, width=17*f)
+C = Tkinter.Canvas(top, height=120*f, width=23*f)
 
 #loopt door alle coordinaten van de geplaatste tegels voor het begin coordinaat,
 #en voor elke tegel worden de coordinaten gegeven voor de rectangle.
@@ -45,7 +45,7 @@ for tile in placedCoordinates:
             Stackoverflow,(2014).Random fill colour for shapes in Python(TKinter). Verkregen op 9, mei, 2016 van http://stackoverflow.com/questions/22950997/random-fill-colour-for-shapes-in-pythontkinter
             """
             #tekent elke tegel in het canvas met een random color.
-            tileName = C.create_rectangle(coor, fill= "#"+("%06x"%random.randint(0,16777215)), width=2)
+            tileName = C.create_rectangle(coor, fill= "#"+("%06x"%random.randint(0,16777215)), width=1)
 
 C.pack()
 top.mainloop()

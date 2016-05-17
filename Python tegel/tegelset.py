@@ -3,22 +3,15 @@ from tileSets import *
 Importeren van een externe file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
-# ##http://stackoverflow.com/questions/31280555/python-recursive-algorithm-doesnt-work-for-large-values-c-program-works
-import sys
-sys.setrecursionlimit(11000)
-
-#https://www.safaribooksonline.com/library/view/python-cookbook-3rd/9781449357337/ch04s09.html
-from itertools import permutations
-from itertools import *
 
 global tileSet
-tileSet = tileSet1
+tileSet = []
 
 global placedCoordinates
 placedCoordinates = []
 
-global neighbourdict
-neighbourdict = {}
+global sortTileSet
+sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
 
 
 class Canvas():
@@ -34,7 +27,7 @@ class Canvas():
         self.widthCanvas = width
         self.heightCanvas = height
 
-        # maak coordinaten door list van list te maken
+        # maak coordinaten door list van list te maken 2d-array/grid.
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
@@ -49,12 +42,11 @@ class Canvas():
         # kijkt of de tegel wel binnen het canvas past.
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             return False
-        #print"hello2"
+
         #checkt of de tegel er geheel in past.
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
                 return False
-
 
         #plaatst de tegel indien het niet false is.
         for i in range(tileHeight):
@@ -65,20 +57,13 @@ class Canvas():
         #Roept functie aan om coordinaten per tegel op te slaan.
         coor = self.saveCoordinates(tileName, startX, startY)
 
-        #self.visualizeCanvas()
-
         #begint met zoeken voor een tegel voor de volgende positie.
         return True
 
-
     def saveCoordinates(self, tileName, coorX, coorY):
 
-
         coordinate = (tileName, coorX, coorY)
-        #coordinateWidth = (tileName, coorX, coorY)
         placedCoordinates.append(coordinate)
-        #tiles.allTriedCoordinates.append(coordinateWidth)
-
 
         return placedCoordinates
 
@@ -94,8 +79,7 @@ class Canvas():
             else
                 go back to try next position
         """
-
-        # ga de canvas af
+        # gaat het  canvas af
         for i in range(self.heightCanvas):
             for j in range(self.widthCanvas):
                 # zoek lege plek
@@ -103,146 +87,140 @@ class Canvas():
                     return (j,i)
 
     def visualizeCanvas(self):
-        # sort = sorted(tiles.allTriedCoordinates, key=lambda x: x[0],  reverse=False)
-        # print "all", sort
 
         for row in self.space:
             print row
         print '\n'
-        #print tiles.neighbourList
 
-    def stepBack(self,stack, iStack, sortTileSet):
-        #print"ja"
-        tile = stack[iStack][0]
 
-        #lege optie uit stack halen
+    def stepBack(self,stack, iStack, sortTileSet, tile):
+
+        #Tegel zonder opties uit de stack verwijderen.
         stack.pop()
 
-
-        #als hele stack leeg is
-        if iStack < 1:
-            print "not found", stack, sortTileSet
-            quit()
+        #appends tile to sorttileset again.
+        sortTileSet.append(tile)
+        sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
 
         #removes tile from the options left from his neighbour.
         stack[iStack-1][1].remove(tile)
 
-        iStack = iStack-1
+        #als hele stack leeg is
+        if iStack < 1:
+            print "nienke error: not found", stack, sortTileSet
+            quit()
 
+
+        ###
+        ###Verwijdert tegel uit canvas en placedcoordinates.
         t = Tile(tile)
-
         #bepalen coordinate laatst geplaatste tegel.
         iCoor = len(placedCoordinates)-1
-        lastTile =  placedCoordinates[iCoor]
+        lastTile = placedCoordinates[iCoor]
         placedCoordinates.remove(lastTile)
-        print lastTile
+
         #tegel wordt verwijdert uit het canvas
         for i in range(t.tileHeight):
             for j in range (t.tileWidth):
                 self.space[lastTile[2] + i][lastTile[1] + j] = 0
-        self.visualizeCanvas()
+        ###
+        ###
 
-        if lastTile not in sortTileSet:
-            #print "append1", tile
-            sortTileSet.append(tile)
-            sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
-            #print sortTileSet
+        iStack = len(stack) - 1
+        #print "stepback", sortTileSet
+        return self.nextStep(stack, iStack, sortTileSet, tile)
 
-        self.nextStep(stack, iStack, sortTileSet)
+    def nextStep(self, stack, iStack, sortTileSet, tile):
+        """
+        checks whether there are options left for next to the placed tile,
+        otherwise the placed tile needs to be removed.
+        If there are options left it continues in runTileSetter.
+        """
 
-    def nextStep(self, stack, iStack, sortTileSet):
-        #print "ja2"
-        #if there are no options left
+        #if there are no options left for next to the placed tile.
         if len(stack[iStack][1]) < 1:
 
             tile = stack[iStack][0]
-            #print "tegel is3:", tile
-            #print "test2", tile
-            #adds tile to the sorttileset again
-            if tile not in sortTileSet:
-                #print "append1", tile
-                sortTileSet.append(tile)
-                sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
-                #print sortTileSet
+
+            # #adds tile to the sorttileset again
+            # if tile not in sortTileSet:
+            #     #print "append1", tile
+            #     sortTileSet.append(tile)
+            #     sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+            #     #print sortTileSet
 
 
-            self.stepBack(stack, iStack, sortTileSet)
+            return self.stepBack(stack, iStack, sortTileSet, tile)
 
-        else:
-
-            return stack, iStack, sortTileSet
+        #print "nextStep", sortTileSet
+        return stack, iStack, sortTileSet, tile
 
     def runTileSetter(self):
-
-        self.space = [[0 for count in range(17)] for count in range(17)]
+        """
+        """
         stack = []
-        i = 0
         iStack = 0
+
         sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
 
-
         while sortTileSet:
+
             #index for the stack
             iStack = len(stack)-1
 
             #search for a tile from the options of his neighbour,
             if len(stack) > 0:
-                self.nextStep(stack, iStack, sortTileSet)
-                #print"testing", len(stack), iStack
+
+                #returns the new values from the next step function,
+                # for the values stack, iStack and sortTileSet.
+                newValue = self.nextStep(stack, iStack, sortTileSet, tile)
+
+                sortTileSet = newValue[2]
+
+                #print "dit zijn de nieuwe values", sortTileSet, newValue[2]
+
                 iStack = len(stack)-1
                 tile = stack[iStack][1][0]
-                #sprint "tegel is2:", tile, stack
-                #print "test", tile
 
 
             #if the tile doesn't have a neighbour, then take the first from the sorttileset.
             else:
-                print "oeps"
-                tile = sortTileSet[0]
 
+                tile = sortTileSet[0]
 
             #gets attributes from a tile.
             t = Tile(tile)
-            #print tile
-            #print "tegel is:", tile
+
+            #removes tile from tileset.
+            sortTileSet.remove(tile)
 
             #adds tile with options to the stack.
             options = sortTileSet[:]
-            options = sorted(options , key=lambda x: x[1],  reverse=True)
-            print options, tile, sortTileSet
-            self.visualizeCanvas()
-            options.remove(tile)
 
-
+            #creates a tuple, and adds this to the stack.
             value = (tile, options)
             stack.append(value)
 
-            #print stack
-
-            #print"1b", stack
-            #checks if a tile fits.
+            #checks if a tile fits in the placetile function.
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
-                #print "remove", tile
-                #if a tile fits, then remove tile from the sortTileSet.
-                sortTileSet.remove(tile)
-                #print sortTileSet
 
-            #if a tile doesnt fit
+                print ""
+
+
+            #if a tile doesn't fit
             else:
-
-                #removes last tile from stack
+                #removes tile with options from stack
                 stack.pop()
 
-                #removes tile from the options left from his neighbour.
-
-                #print len(stack)
+                #removes tegel uit de opties van de tegel ervoor.
                 iStack = len(stack)-1
-                #print stack[iStack][1]
                 stack[iStack][1].remove(tile)
-                #print "2", stack
 
+                #append to sortTileSet
+                sortTileSet.append(tile)
+                sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
 
-
+        self.visualizeCanvas()
 
 class Tile(object):
     """
@@ -256,10 +234,11 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(17,17)
-    #print sortTileSet
+    canvas = Canvas(23,27)
+
+    global tileSet
+    tileSet = tileSet2
 
     canvas.runTileSetter()
-
 
 settingCanvas()
