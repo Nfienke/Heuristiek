@@ -194,6 +194,7 @@ class Canvas():
 
                 print ""
 
+
             #if a tile doesn't fit
             else:
                 #removes tile with options from stack
@@ -221,10 +222,10 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(17,17)
+    canvas = Canvas(23,27)
 
     global tileSet
-    tileSet = tileSet1
+    tileSet = tileSet2
 
     canvas.runTileSetter()
 

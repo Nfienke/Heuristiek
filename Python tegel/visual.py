@@ -11,9 +11,9 @@ from tegelset import *
 top = Tkinter.Tk()
 
 #vergrotingsfactor
-f = 30
+f = 20
 #grootte van canvas keer de vergrotingsfactor.
-C = Tkinter.Canvas(top, height=120*f, width=23*f)
+C = Tkinter.Canvas(height=17*f, width=17*f)
 
 #loopt door alle coordinaten van de geplaatste tegels voor het begin coordinaat,
 #en voor elke tegel worden de coordinaten gegeven voor de rectangle.

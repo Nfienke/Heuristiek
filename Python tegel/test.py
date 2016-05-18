@@ -1,9 +1,13 @@
-from itertools import permutations
-from itertools import *
+from tileSets import *
 
-test = [1,2,3]
+tileSet = tileSet3
+newtiler = []
 
-for i in test:
+for tile in tileSet:
 
-    #i = list(i)
-    print i
+    if tile[1] != tile[2]:
+
+        newtile = tile[0], tile[2], tile[1]
+
+        newtiler.append(tile)
+        newtiler.append(newtile)
