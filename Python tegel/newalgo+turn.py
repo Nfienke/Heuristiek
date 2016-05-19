@@ -1,6 +1,6 @@
 from tileSets import *
 """
-Importeren van een externe file:
+Import from an online file:
 MJJMeijerink,(2015).Heuristieken---Tegelzetten. Verkregen op 14, april, 2016 van https://github.com/MJJMeijerink/Heuristieken---Tegelzetten/tree/master/Source%20code%20files
 """
 
@@ -25,80 +25,80 @@ class Canvas():
 
     def __init__ (self, width, height):
         """
-        creates the empty canvas
+        Creates the empty canvas
         """
         self.widthCanvas = width
         self.heightCanvas = height
 
-        # maak coordinaten door list van list te maken 2d-array/grid.
+        # Creates coordinates by making a list of a list in a 2d-array/grid.
         self.space = [[0 for count in range(width)] for count in range(height)]
 
     def placeTile(self, tileName, tileHeight, tileWidth):
-
-        # zoek de volgende positie van de tegel
+        """
+        Places a tile in the Canvas
+        """
+        # Find the next position of the tile
         start = self.findNextPosition()
 
-        # geef x en y coordinaat om tegel neer te zetten
+        # Returns an x and an y coordinate to place a tile
         startX = start[0]
         startY = start[1]
 
-        # kijkt of de tegel wel binnen het canvas past.
+        # Checks if the tile fits in the parameters of the Canvas
         if tileWidth + startX > self.widthCanvas or tileHeight + startY > self.heightCanvas:
             return False
 
-        #checkt of de tegel er geheel in past.
+        # Checks if the complete tile fits
         for x in range(tileWidth):
             if self.space[startY][startX + x] != 0:
                 return False
 
-        #plaatst de tegel indien het niet false is.
+        # If the tile fits, it is placed in the Canvas
         for i in range(tileHeight):
             for j in range (tileWidth):
-                # als de tegel past wordt hij de tegel neergezet.
                 self.space[startY + i][startX + j] = tileName
 
-        #Roept functie aan om coordinaten per tegel op te slaan.
+        # Calls saveCoordinates to save every tile's coordinates
         coor = self.saveCoordinates(tileName, startX, startY)
 
-        #begint met zoeken voor een tegel voor de volgende positie.
+        # Starts looking for tile for the next position
         self.visualizeCanvas()
         return True
 
     def saveCoordinates(self, tileName, coorX, coorY):
         """
+        Saves the coordinates of all the placed tiles
         """
         coordinate = (tileName, coorX, coorY)
         placedCoordinates.append(coordinate)
 
         return placedCoordinates
 
-
     def findNextPosition(self):
         """
-        Fits the next tile next to the previous one?
-        if yes
-            placeTile
-        else try next position  #eerst een stap naar rechts, als het canvas ophoudt, ga dan een rij omhoog
-            if fits
-                placeTile
-            else
-                go back to try next position
+        Checks if the next tile fits next to the previous one, or a row below
         """
-        # gaat het  canvas af
+        # Goes through Canvas
         for i in range(self.heightCanvas):
             for j in range(self.widthCanvas):
-                # zoek lege plek
+                # Looks for empty spot
                 if self.space[i][j] == 0:
                     return (j,i)
 
     def visualizeCanvas(self):
-        # ...
+        """
+        Prints the Canvas and the placed tiles (with a letter) and zeros for
+        empty spots
+        """
         for row in self.space:
             print row
         print '\n'
 
 
     def stepBack(self,stack, iStack, sortTileSet, tile):
+        """
+        Goes back in the tree to find the next branch of options
+        """
         print "Ik kom in de StepBack", stack
         #Tegel zonder opties uit de stack verwijderen.
         stack.pop()
@@ -139,7 +139,7 @@ class Canvas():
 
     def nextStep(self, stack, iStack, sortTileSet, tile):
         """
-        checks whether there are options left for next to the placed tile,
+        Checks whether there are options left for next to the placed tile,
         otherwise the placed tile needs to be removed.
         If there are options left it continues in runTileSetter.
         """
@@ -154,6 +154,8 @@ class Canvas():
 
     def stackMaker(self, sortTileSet, stack, tile):
         """
+        Creates a stack with all the options for a next tile, including turned
+        tiles
         """
         #print "stackMaker: ", tile, sortTileSet
 
@@ -181,6 +183,7 @@ class Canvas():
 
     def runTileSetter(self):
         """
+        Goes through the tree of options to see whether the tiles fit
         """
         stack = []
         iStack = 0
@@ -257,6 +260,7 @@ class Canvas():
 
 class Tile(object):
     """
+    Returns the parameters of a tile, as defined in tileSets.py
     """
     def __init__(self, tile):
 
@@ -266,6 +270,9 @@ class Tile(object):
 
 
 def settingCanvas():
+    """
+    Takes the parameters of the specific Canvas size and tileset
+    """
 
     canvas = Canvas(23,27)
 
