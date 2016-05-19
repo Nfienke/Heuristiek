@@ -192,8 +192,7 @@ class Canvas():
             #checks if a tile fits in the placetile function.
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
 
-                print ""
-
+                continue
 
             #if a tile doesn't fit
             else:
