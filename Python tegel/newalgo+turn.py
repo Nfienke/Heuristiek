@@ -13,6 +13,9 @@ placedCoordinates = []
 global sortTileSet
 sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
 
+global options
+options = []
+
 
 class Canvas():
     """
@@ -58,10 +61,12 @@ class Canvas():
         coor = self.saveCoordinates(tileName, startX, startY)
 
         #begint met zoeken voor een tegel voor de volgende positie.
+        self.visualizeCanvas()
         return True
 
     def saveCoordinates(self, tileName, coorX, coorY):
-
+        """
+        """
         coordinate = (tileName, coorX, coorY)
         placedCoordinates.append(coordinate)
 
@@ -87,22 +92,29 @@ class Canvas():
                     return (j,i)
 
     def visualizeCanvas(self):
-
+        # ...
         for row in self.space:
             print row
         print '\n'
 
 
     def stepBack(self,stack, iStack, sortTileSet, tile):
-
+        print "Ik kom in de StepBack", stack
         #Tegel zonder opties uit de stack verwijderen.
         stack.pop()
 
         #appends tile to sorttileset again.
-        sortTileSet.append(tile)
+        if "*" in tile[0]:
+            tile[0] = tile[0].replace("*","")
+            tile = tile[0], tile[2], tile[1]
+            sortTileSet.append(tile)
+        else:
+            print "in de else", tile
+            sortTileSet.append(tile)
+
         sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
 
-        #removes tile from the options left from his neighbour.
+        # Removes tile from the options left from his neighbour.
         stack[iStack-1][1].remove(tile)
 
         #als hele stack leeg is
@@ -110,9 +122,7 @@ class Canvas():
             print "nienke error: not found", stack, sortTileSet
             quit()
 
-
-        ###
-        ###Verwijdert tegel uit canvas en placedcoordinates.
+        # Verwijdert tegel uit canvas en placedcoordinates.
         t = Tile(tile)
         #bepalen coordinate laatst geplaatste tegel.
         iCoor = len(placedCoordinates)-1
@@ -123,8 +133,6 @@ class Canvas():
         for i in range(t.tileHeight):
             for j in range (t.tileWidth):
                 self.space[lastTile[2] + i][lastTile[1] + j] = 0
-        ###
-        ###
 
         iStack = len(stack) - 1
         return self.nextStep(stack, iStack, sortTileSet, tile)
@@ -135,16 +143,41 @@ class Canvas():
         otherwise the placed tile needs to be removed.
         If there are options left it continues in runTileSetter.
         """
-
+        print "Ik zit in de nextStep"
         #if there are no options left for next to the placed tile.
         if len(stack[iStack][1]) < 1:
-
             tile = stack[iStack][0]
-
+            print "De if statement van nextStep is gelukt"
             return self.stepBack(stack, iStack, sortTileSet, tile)
 
-
         return stack, iStack, sortTileSet, tile
+
+    def stackMaker(self, sortTileSet, stack, tile):
+        """
+        """
+        #print "stackMaker: ", tile, sortTileSet
+
+        #removes tile from tileset
+        print "help", tile, sortTileSet
+        sortTileSet.remove(tile)
+
+        stackTile = tile
+
+        #adds tile with options to the stack.
+        # options = sortTileSet[:]
+
+        for tile in sortTileSet:
+            if tile[1] != tile[2]:
+                rotatedTile = tile[0]+"*", tile[2], tile[1]
+                options.append(rotatedTile)
+            options.append(tile)
+
+        #creates a tuple, and adds this to the stack.
+        value = (stackTile, options)
+        stack.append(value)
+        print "Ik ben door de if statement heen gegaan", stack
+
+        return stack
 
     def runTileSetter(self):
         """
@@ -155,10 +188,8 @@ class Canvas():
         sortTileSet = sorted(tileSet , key=lambda x: x[1],  reverse=True)
 
         while sortTileSet:
-
             #index for the stack
             iStack = len(stack)-1
-
             #search for a tile from the options of his neighbour,
             if len(stack) > 0:
 
@@ -173,26 +204,30 @@ class Canvas():
 
             #if the tile doesn't have a neighbour, then take the first from the sorttileset.
             else:
-
                 tile = sortTileSet[0]
 
             #gets attributes from a tile.
             t = Tile(tile)
 
-            #removes tile from tileset.
-            sortTileSet.remove(tile)
+            print "voor de return", stack
+            stackMaker = self.stackMaker(sortTileSet, stack, tile)
+            print "SM", stackMaker
+            print "na de return", stack
 
-            #adds tile with options to the stack.
-            options = sortTileSet[:]
-
-            #creates a tuple, and adds this to the stack.
-            value = (tile, options)
-            stack.append(value)
+            # #removes tile from tileset.
+            # sortTileSet.remove(tile)
+            #
+            # #adds tile with options to the stack.
+            # options = sortTileSet[:]
+            #
+            # #creates a tuple, and adds this to the stack.
+            # value = (tile, options)
+            # stack.append(value)
 
             #checks if a tile fits in the placetile function.
             if self.placeTile(t.tileName, t.tileHeight, t.tileWidth):
-
-                print ""
+                print "stack: ", stack
+                continue
 
             #if a tile doesn't fit
             else:
@@ -204,9 +239,20 @@ class Canvas():
                 stack[iStack][1].remove(tile)
 
                 #append to sortTileSet
-                sortTileSet.append(tile)
-                sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+                """
+                Als je hem toevoegt, en het is een sterretje, dan moet je
+                alleen de normale letter toevoegen
+                """
+                if "*" in tile[0]:
+                    tile[0] = tile[0].replace("*","")
+                    tile = tile[0], tile[2], tile[1]
+                    sortTileSet.append(tile)
+                else:
+                    sortTileSet.append(tile)
 
+                sortTileSet = sorted(sortTileSet , key=lambda x: x[1],  reverse=True)
+
+        print "hallo?", stack
         self.visualizeCanvas()
 
 class Tile(object):
@@ -221,10 +267,10 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(17,17)
+    canvas = Canvas(23,27)
 
     global tileSet
-    tileSet = tileSet1
+    tileSet = tileSet2
 
     canvas.runTileSetter()
 
