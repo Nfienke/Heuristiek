@@ -221,10 +221,10 @@ class Tile(object):
 
 def settingCanvas():
 
-    canvas = Canvas(23,27)
+    canvas = Canvas(17,17)
 
     global tileSet
-    tileSet = tileSet2
+    tileSet = tileSet1
 
     canvas.runTileSetter()
 
