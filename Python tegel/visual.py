@@ -6,14 +6,15 @@ tutorialspoint,(2016).Python Tkinter Canvas. Verkregen op 9, mei, 2016 van http:
 import Tkinter
 import tkMessageBox
 import random
-from tegelset import *
+from metdraaien import *
 
 top = Tkinter.Tk()
 
 #vergrotingsfactor
 f = 20
-#grootte van canvas keer de vergrotingsfactor.
-C = Tkinter.Canvas(height=17*f, width=17*f)
+canvas = Canvas
+#creert scherm
+C = Tkinter.Canvas(height=56*f, width=55*f)
 
 #loopt door alle coordinaten van de geplaatste tegels voor het begin coordinaat,
 #en voor elke tegel worden de coordinaten gegeven voor de rectangle.
@@ -44,8 +45,15 @@ for tile in placedCoordinates:
             """
             Stackoverflow,(2014).Random fill colour for shapes in Python(TKinter). Verkregen op 9, mei, 2016 van http://stackoverflow.com/questions/22950997/random-fill-colour-for-shapes-in-pythontkinter
             """
-            #tekent elke tegel in het canvas met een random color.
-            tileName = C.create_rectangle(coor, fill= "#"+("%06x"%random.randint(0,16777215)), width=1)
-
+            # kiest rgb's van verschillende tinten roze
+            de=("%02x"%random.randint(255,255))
+            re=("%02x"%random.randint(0,150))
+            we=("%02x"%random.randint(120,200))
+            ge="#"
+            color=ge+de+re+we
+            
+            #geeft tegel kleur
+            tileName = C.create_rectangle(coor, fill= color, width=1)
+#tekent tegelset
 C.pack()
 top.mainloop()
